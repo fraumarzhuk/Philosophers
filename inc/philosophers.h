@@ -6,7 +6,7 @@
 /*   By: mariannazhukova <mariannazhukova@studen    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/03 15:42:53 by mariannazhu       #+#    #+#             */
-/*   Updated: 2024/08/03 16:40:25 by mariannazhu      ###   ########.fr       */
+/*   Updated: 2024/08/05 17:50:11 by mariannazhu      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,14 @@ typedef struct s_env
 	int	num_of_times_each_eat;
 }	t_env;
 
+typedef struct s_philo
+{
+	int	index;
+	int	state;
+	pthread_t thread;
+	t_env	*philo_info;
+	t_philo	*next;
+}	t_philo;
 //set_env
 
 int check_arguments(int argc);
