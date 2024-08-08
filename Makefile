@@ -9,7 +9,8 @@ NAME = philosophers
 CC = cc
 CFLAGS = -Wall -Wextra -Werror -g
 SRCS =	src/main.c \
-		src/set_env.c
+		src/set_env.c \
+		src/process.c \
 
 LIBFT_DIR = ./libft
 LIBFT = ./libft/libft.a
