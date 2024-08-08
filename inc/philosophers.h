@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philosophers.h                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mariannazhukova <mariannazhukova@studen    +#+  +:+       +#+        */
+/*   By: mzhukova <mzhukova@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/03 15:42:53 by mariannazhu       #+#    #+#             */
-/*   Updated: 2024/08/05 17:50:11 by mariannazhu      ###   ########.fr       */
+/*   Updated: 2024/08/08 15:46:54 by mzhukova         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,11 +33,12 @@ typedef struct s_philo
 	int	state;
 	pthread_t thread;
 	t_env	*philo_info;
-	t_philo	*next;
 }	t_philo;
 //set_env
 
-int check_arguments(int argc);
-void set_arguments(int argc, char **argv, t_env *philo_info);
+int		check_arguments(int argc);
+void	set_arguments(int argc, char **argv, t_env *philo_info);
+void	create_threads(t_env *philo_info, struct s_philo *philos);
+void	*life_cycle(void *param);
 
 #endif

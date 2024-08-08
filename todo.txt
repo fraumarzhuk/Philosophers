@@ -9,8 +9,7 @@ TODO:
 		current = current->next
 }
 2. Create and join the threads.
-	while (current->next)
-		pthread_create()
+	create an array of philo structs and fill in the info.
 3. Create a function, that checks simultaneously what is the state of the other threads and picks the action, calls the function that prints the state and changes the state. 
 4. void print_state()
 	checkd the state and prints out the message
