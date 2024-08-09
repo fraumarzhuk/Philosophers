@@ -6,7 +6,7 @@
 /*   By: mzhukova <mzhukova@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/03 16:06:28 by mariannazhu       #+#    #+#             */
-/*   Updated: 2024/08/09 16:26:36 by mzhukova         ###   ########.fr       */
+/*   Updated: 2024/08/09 17:33:33 by mzhukova         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,13 @@
 int check_arguments(int argc, char **argv)
 {
 	int	i;
-	if (argc != 6 && argc != 5)
+	if (argc != 6 && argc != 5 && argv)
 	{
 		printf("Incorrect number of arguments\n");
 		return (0);
 	}
 	i = 1;
-	while (i <= argc)
+	while (i < argc)
 	{
 		if (!argv[i][0] || (!ft_isnum(argv[i])))
 		{
@@ -30,9 +30,9 @@ int check_arguments(int argc, char **argv)
 		}
 		i++;
 	}
-	if ((ft_atoi(argv[1])) > 200)
+	if ((ft_atoi(argv[1])) > 200 || ((ft_atoi(argv[1])) < 1))
 	{
-		printf("Too many dudes around the table\n");
+		printf("Too many  or to few dudes around the table\n");
 		return (0);
 	}
 	return (1);

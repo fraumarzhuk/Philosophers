@@ -6,7 +6,7 @@
 /*   By: mzhukova <mzhukova@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/03 15:58:42 by mariannazhu       #+#    #+#             */
-/*   Updated: 2024/08/09 16:16:45 by mzhukova         ###   ########.fr       */
+/*   Updated: 2024/08/09 17:42:35 by mzhukova         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,8 @@ int main(int argc, char **argv)
 	t_env	*philo_info;
 	t_philo	philos[200];
 	
-	philo_info = ft_malloc(sizeof(t_env *));
+	ft_alloc_init();
+	philo_info = ft_malloc(sizeof(t_env));
 	if (check_arguments(argc, argv))
 	{
 		//set timestamp. write a function with gettimeoftheday
@@ -30,5 +31,7 @@ int main(int argc, char **argv)
 		ft_destructor();
 		return (1);
 	}
+	ft_destructor();
 	return (0);
 }
+//ADD A NEW VERSION OF A LEAK KILLER MARIANNA
