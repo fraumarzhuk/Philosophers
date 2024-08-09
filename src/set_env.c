@@ -6,17 +6,33 @@
 /*   By: mzhukova <mzhukova@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/03 16:06:28 by mariannazhu       #+#    #+#             */
-/*   Updated: 2024/08/08 18:20:49 by mzhukova         ###   ########.fr       */
+/*   Updated: 2024/08/09 16:26:36 by mzhukova         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/philosophers.h"
 
-int check_arguments(int argc)
+int check_arguments(int argc, char **argv)
 {
+	int	i;
 	if (argc != 6 && argc != 5)
 	{
 		printf("Incorrect number of arguments\n");
+		return (0);
+	}
+	i = 1;
+	while (i <= argc)
+	{
+		if (!argv[i][0] || (!ft_isnum(argv[i])))
+		{
+			printf("Incorrect arguments\n");
+			return (0);	
+		}
+		i++;
+	}
+	if ((ft_atoi(argv[1])) > 200)
+	{
+		printf("Too many dudes around the table\n");
 		return (0);
 	}
 	return (1);
@@ -69,8 +85,16 @@ void	*life_cycle(void *param)
 	t_philo *philo;
 	
 	philo = param;
-	//printf("thread %lu has started!\n", philo->thread);
-	//printf("philo state: %i and index: %i\n", philo->state, philo->index);
-	//print_state(philo->state, philo->index);
+	// printf("thread %lu has started!\n", philo->thread);
+	// printf("philo state: %i and index: %i\n", philo->state, philo->index);
+	// print_state(philo->state, philo->index);
+	
+	//1. check the forks on left and right
+	//2. if forks are free, take
+	//3. if forks are taken, eat while time_eat--
+	//4. when finished eating, start thinking or sleeping, unlock the forks, times_of eat--
+	//(save num_eat to each philo?)
+	//(how to choose to sleep or to think?)
+	//5.
 	return (param);
 }

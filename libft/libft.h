@@ -6,7 +6,7 @@
 /*   By: mzhukova <mzhukova@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 22:58:37 by mariannazhu       #+#    #+#             */
-/*   Updated: 2024/05/04 17:03:29 by mzhukova         ###   ########.fr       */
+/*   Updated: 2024/08/09 16:15:59 by mzhukova         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,5 +57,6 @@ size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize);
 size_t	ft_strlen(const char *s);
 
 void	free_split(char **split);
+int		ft_isnum(char *str);
 
 #endif

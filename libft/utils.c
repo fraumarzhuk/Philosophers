@@ -6,7 +6,7 @@
 /*   By: mzhukova <mzhukova@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/04 12:47:06 by mariannazhu       #+#    #+#             */
-/*   Updated: 2024/05/04 17:14:08 by mzhukova         ###   ########.fr       */
+/*   Updated: 2024/08/09 16:15:41 by mzhukova         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,4 +25,17 @@ void	free_split(char **split)
 		i++;
 	}
 	ft_free(split);
+}
+int	ft_isnum(char *str)
+{
+	int	i;
+
+	i = 0;
+	while (str[i])
+	{
+		if (((str[i] < 48) || (str[i] > 57)))
+			return (0);
+		i++;
+	}
+	return (1);
 }
