@@ -6,7 +6,7 @@
 /*   By: mzhukova <mzhukova@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/03 15:42:53 by mariannazhu       #+#    #+#             */
-/*   Updated: 2024/08/12 14:36:06 by mzhukova         ###   ########.fr       */
+/*   Updated: 2024/08/12 16:49:48 by mzhukova         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,10 +55,10 @@ int		check_arguments(int argc, char **argv);
 void	set_arguments(int argc, char **argv, t_env *philo_info);
 void	create_threads(t_env *philo_info, t_philo *philos);
 void	join_threads(t_env *philo_info, t_philo *philos);
-void	toggle_mutexes(t_env *philo_info, t_philo *philos, bool init);
+void	toggle_mutexes(t_env *philo_info, t_philo *philos, bool is_init);
 
 //process
 void	print_state(int state, int index);
 void	*life_cycle(void *param);
-int		forks_are_free(t_philo *philo);
+int		forks_are_free(t_philo *philo, t_philo *philo_arr);
 #endif

@@ -6,7 +6,7 @@
 /*   By: mzhukova <mzhukova@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/03 15:58:42 by mariannazhu       #+#    #+#             */
-/*   Updated: 2024/08/12 14:36:55 by mzhukova         ###   ########.fr       */
+/*   Updated: 2024/08/12 16:22:33 by mzhukova         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,8 @@ int main(int argc, char **argv)
 	if (check_arguments(argc, argv))
 	{
 		//set timestamp. write a function with gettimeoftheday
-		toggle_mutexes(philo_info, philos, true);
 		set_arguments(argc, argv, philo_info);
+		toggle_mutexes(philo_info, philos, true);
 		create_threads(philo_info, philos);
 		join_threads(philo_info, philos);
 		toggle_mutexes(philo_info, philos, false);

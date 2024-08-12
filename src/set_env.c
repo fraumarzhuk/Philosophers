@@ -6,7 +6,7 @@
 /*   By: mzhukova <mzhukova@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/03 16:06:28 by mariannazhu       #+#    #+#             */
-/*   Updated: 2024/08/12 15:01:50 by mzhukova         ###   ########.fr       */
+/*   Updated: 2024/08/12 17:13:02 by mzhukova         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,9 +53,10 @@ void	create_threads(t_env *philo_info, t_philo *philos)
 	int i;
 	int	error;
 	
-	i = 1;
-	while (i <= philo_info->num_philos)
+	i = 0;
+	while (i < philo_info->num_philos)
 	{
+		philos[i] = *(t_philo*)malloc(sizeof(t_philo));
 		error = pthread_create(&philos[i].thread, NULL, life_cycle, &philos[i]);
 		if (error != 0)
 			printf("Error creating a thread\n");
@@ -70,8 +71,8 @@ void join_threads(t_env *philo_info, t_philo *philos)
 	int i;
 	int	error;
 	
-	i = 1;
-	while (i <= philo_info->num_philos)
+	i = 0;
+	while (i < philo_info->num_philos)
 	{
 		error = pthread_join(philos[i].thread, philos[i].status);
 		if (error != 0)
@@ -80,7 +81,7 @@ void join_threads(t_env *philo_info, t_philo *philos)
 	}
 }
 
-void toggle_mutexes(t_env *philo_info, t_philo *philos, bool init)
+void toggle_mutexes(t_env *philo_info, t_philo *philos, bool is_init)
 {
 	int i;
 	int	error;
@@ -88,14 +89,14 @@ void toggle_mutexes(t_env *philo_info, t_philo *philos, bool init)
 	i = 1;
 	while (i <= philo_info->num_philos)
 	{
-		if (init)
+		if (is_init)
 		{
 			philos[i].mutex = malloc(sizeof(pthread_mutex_t));
 			if (!philos[i].mutex)
 				return ; // rename to int later and make proper error handling
 			error = pthread_mutex_init(philos[i].mutex, NULL);
 		}
-		else
+		else if (!is_init)
 		{
 			error = pthread_mutex_destroy(philos[i].mutex);
 			free(philos[i].mutex);
@@ -103,7 +104,6 @@ void toggle_mutexes(t_env *philo_info, t_philo *philos, bool init)
 		}
 		if (error != 0)
 			printf("Mutex error\n");
-		printf("mutex created\n");
 		i++;
 	}
 }

@@ -10,3 +10,17 @@ Test 4 410 200 200. No philosopher should die.
 Test 4 310 200 100. One philosopher should die.
 Test with 2 philosophers and check the different times: a death delayed by more than 10 ms is unacceptable.
 Test with any values of your choice to verify all the requirements. Ensure philosophers die at the right time, that they don't steal forks, and so forth.
+
+***********************************************
+todo for the life_cycle:
+
+	// printf("thread %lu has started!\n", philo->thread);
+	// printf("philo state: %i and index: %i\n", philo->state, philo->index);
+	// print_state(philo->state, philo->index);
+	
+	//1. check the forks on left and right
+	//2. if forks are free, take
+	//3. if forks are taken, eat while time_eat--
+	//4. when finished eating, start thinking or sleeping, unlock the forks, times_of eat--
+	//(save num_eat to each philo?)
+	//(how to choose to sleep or to think?)
