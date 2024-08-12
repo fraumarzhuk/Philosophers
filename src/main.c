@@ -6,7 +6,7 @@
 /*   By: mzhukova <mzhukova@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/03 15:58:42 by mariannazhu       #+#    #+#             */
-/*   Updated: 2024/08/09 17:42:35 by mzhukova         ###   ########.fr       */
+/*   Updated: 2024/08/12 14:36:55 by mzhukova         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,21 +17,24 @@ int main(int argc, char **argv)
 	t_env	*philo_info;
 	t_philo	philos[200];
 	
-	ft_alloc_init();
-	philo_info = ft_malloc(sizeof(t_env));
+	philo_info = malloc(sizeof(t_env));
+	philo_info->philo_arr = philos;
 	if (check_arguments(argc, argv))
 	{
 		//set timestamp. write a function with gettimeoftheday
+		toggle_mutexes(philo_info, philos, true);
 		set_arguments(argc, argv, philo_info);
 		create_threads(philo_info, philos);
 		join_threads(philo_info, philos);
+		toggle_mutexes(philo_info, philos, false);
 	}
 	else
 	{
-		ft_destructor();
+		free(philo_info);
 		return (1);
 	}
-	ft_destructor();
+	
 	return (0);
 }
-//ADD A NEW VERSION OF A LEAK KILLER MARIANNA
+//DELETE LEAK KILLER
+// Do a linked list anyway? so they are circled?

@@ -6,7 +6,7 @@
 /*   By: mzhukova <mzhukova@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/03 16:06:28 by mariannazhu       #+#    #+#             */
-/*   Updated: 2024/08/09 17:33:33 by mzhukova         ###   ########.fr       */
+/*   Updated: 2024/08/12 15:01:50 by mzhukova         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,21 +80,30 @@ void join_threads(t_env *philo_info, t_philo *philos)
 	}
 }
 
-void	*life_cycle(void *param)
+void toggle_mutexes(t_env *philo_info, t_philo *philos, bool init)
 {
-	t_philo *philo;
+	int i;
+	int	error;
 	
-	philo = param;
-	// printf("thread %lu has started!\n", philo->thread);
-	// printf("philo state: %i and index: %i\n", philo->state, philo->index);
-	// print_state(philo->state, philo->index);
-	
-	//1. check the forks on left and right
-	//2. if forks are free, take
-	//3. if forks are taken, eat while time_eat--
-	//4. when finished eating, start thinking or sleeping, unlock the forks, times_of eat--
-	//(save num_eat to each philo?)
-	//(how to choose to sleep or to think?)
-	//5.
-	return (param);
+	i = 1;
+	while (i <= philo_info->num_philos)
+	{
+		if (init)
+		{
+			philos[i].mutex = malloc(sizeof(pthread_mutex_t));
+			if (!philos[i].mutex)
+				return ; // rename to int later and make proper error handling
+			error = pthread_mutex_init(philos[i].mutex, NULL);
+		}
+		else
+		{
+			error = pthread_mutex_destroy(philos[i].mutex);
+			free(philos[i].mutex);
+			philos[i].mutex = NULL;
+		}
+		if (error != 0)
+			printf("Mutex error\n");
+		printf("mutex created\n");
+		i++;
+	}
 }
