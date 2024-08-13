@@ -6,13 +6,13 @@
 /*   By: mzhukova <mzhukova@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/03 16:06:28 by mariannazhu       #+#    #+#             */
-/*   Updated: 2024/08/13 16:26:23 by mzhukova         ###   ########.fr       */
+/*   Updated: 2024/08/13 17:37:49 by mzhukova         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/philosophers.h"
 
-int check_arguments(int argc, char **argv)
+int	check_arguments(int argc, char **argv)
 {
 	int	i;
 	if (argc != 6 && argc != 5 && argv)
@@ -37,7 +37,8 @@ int check_arguments(int argc, char **argv)
 	}
 	return (1);
 }
-void set_arguments(int argc, char **argv, t_env *philo_info)
+
+void	set_arguments(int argc, char **argv, t_env *philo_info)
 {
 	philo_info->num_philos = ft_atoi(argv[1]);
 	philo_info->time_die = ft_atoi(argv[2]);
@@ -49,10 +50,9 @@ void set_arguments(int argc, char **argv, t_env *philo_info)
 		philo_info->num_of_times_each_eat = -1;
 }
 
-
 void	create_threads(t_env *philo_info, t_philo *philos)
 {
-	int i;
+	int	i;
 	int	error;
 	
 	i = 0;
@@ -70,9 +70,9 @@ void	create_threads(t_env *philo_info, t_philo *philos)
 		i++;
 	}
 }
-void join_threads(t_env *philo_info, t_philo *philos)
+void	join_threads(t_env *philo_info, t_philo *philos)
 {
-	int i;
+	int	i;
 	int	error;
 	
 	i = 0;
@@ -85,7 +85,7 @@ void join_threads(t_env *philo_info, t_philo *philos)
 	}
 }
 
-void toggle_mutexes(t_env *philo_info, bool is_init)
+void	toggle_mutexes(t_env *philo_info, bool is_init)
 {
 	int	error;
 	

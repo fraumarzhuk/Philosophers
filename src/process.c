@@ -6,17 +6,12 @@
 /*   By: mzhukova <mzhukova@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/08 17:35:46 by mzhukova          #+#    #+#             */
-/*   Updated: 2024/08/13 17:29:04 by mzhukova         ###   ########.fr       */
+/*   Updated: 2024/08/13 17:44:24 by mzhukova         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/philosophers.h"
 
-//states:
-// 1 - eating
-// 2 - sleeping
-// 3 - thinking (waiting for forks)
-// 4 - dead
 void	print_state(int state, int index)
 {
 	if (state == 1)
@@ -48,11 +43,9 @@ void	*life_cycle(void *param)
 	}
 	while (1)
 	{
-		//usleep(400);
 		if (philo->state == 3) //thinking or was sleeping last time, should try to eat
 		{
 			print_state(3, philo->index);	 //thinking
-			//check one philo and two philos, add later
 			pthread_mutex_lock(&philo->philo_info->mutex);
 			target_index = forks_are_free(philo, philo->philo_info->philo_arr);
 			if (target_index >= 0 && target_index < philo->philo_info->num_philos) //forks are available, went to eat
@@ -65,7 +58,6 @@ void	*life_cycle(void *param)
 			{
 				philo->forks_taken = false;
 				print_state(3, philo->index);	 //thinking
-				//usleep(philo->philo_info->time_sleep);
 				philo->state = 3;
 				
 			}

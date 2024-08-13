@@ -6,7 +6,7 @@
 /*   By: mzhukova <mzhukova@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/03 15:42:53 by mariannazhu       #+#    #+#             */
-/*   Updated: 2024/08/13 16:00:18 by mzhukova         ###   ########.fr       */
+/*   Updated: 2024/08/13 17:43:11 by mzhukova         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,12 @@ typedef struct s_philo
 	pthread_t thread;
 	t_env	*philo_info;
 }	t_philo;
+
+//states:
+// 1 - eating
+// 2 - sleeping
+// 3 - thinking (waiting for forks)
+// 4 - dead
 
 typedef struct s_env
 {
