@@ -6,7 +6,7 @@
 /*   By: mzhukova <mzhukova@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/03 16:06:28 by mariannazhu       #+#    #+#             */
-/*   Updated: 2024/08/13 16:09:17 by mzhukova         ###   ########.fr       */
+/*   Updated: 2024/08/13 16:26:23 by mzhukova         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ void set_arguments(int argc, char **argv, t_env *philo_info)
 	if (argc == 6)
 		philo_info->num_of_times_each_eat = ft_atoi(argv[5]);
 	else
-		philo_info->num_of_times_each_eat = 0;
+		philo_info->num_of_times_each_eat = -1;
 }
 
 

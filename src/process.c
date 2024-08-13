@@ -6,7 +6,7 @@
 /*   By: mzhukova <mzhukova@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/08 17:35:46 by mzhukova          #+#    #+#             */
-/*   Updated: 2024/08/13 16:10:11 by mzhukova         ###   ########.fr       */
+/*   Updated: 2024/08/13 16:25:51 by mzhukova         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,24 +42,25 @@ void	*life_cycle(void *param)
 	
 	while (1)
 	{
-		usleep(400);
+		//usleep(400);
 		if (philo->state == 3) //thinking or was sleeping last time, should try to eat
 		{
+			print_state(3, philo->index);	 //thinking
 			//check one philo and two philos, add later
 			pthread_mutex_lock(&philo->philo_info->mutex);
 			target_index = forks_are_free(philo, philo->philo_info->philo_arr);
-			if (target_index >= 0 && target_index < philo->philo_info->num_philos) //forks are available
+			if (target_index >= 0 && target_index < philo->philo_info->num_philos) //forks are available, went to eat
 			{
 				if (!eat_pasta(philo, target_index))
 					return (param);
-				philo->state = 2;
+				philo->state = 2; // ate well, went to sleep;
 			}
-			else
+			else //went to think
 			{
-				philo->state = 3;
 				philo->forks_taken = false;
-				print_state(3, philo->index);	
-				usleep(philo->philo_info->time_sleep);
+				print_state(3, philo->index);	 //thinking
+				//usleep(philo->philo_info->time_sleep);
+				philo->state = 3;
 				
 			}
 			pthread_mutex_unlock(&philo->philo_info->mutex);
