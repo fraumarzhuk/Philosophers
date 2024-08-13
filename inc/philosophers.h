@@ -6,7 +6,7 @@
 /*   By: mzhukova <mzhukova@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/03 15:42:53 by mariannazhu       #+#    #+#             */
-/*   Updated: 2024/08/13 13:40:08 by mzhukova         ###   ########.fr       */
+/*   Updated: 2024/08/13 16:00:18 by mzhukova         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,4 +62,5 @@ void	toggle_mutexes(t_env *philo_info, bool is_init);
 void	print_state(int state, int index);
 void	*life_cycle(void *param);
 int		forks_are_free(t_philo *philo, t_philo *philo_arr);
+int		eat_pasta(t_philo *philo, int target_index);
 #endif

@@ -6,7 +6,7 @@
 /*   By: mzhukova <mzhukova@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/03 16:06:28 by mariannazhu       #+#    #+#             */
-/*   Updated: 2024/08/13 13:42:17 by mzhukova         ###   ########.fr       */
+/*   Updated: 2024/08/13 16:09:17 by mzhukova         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int check_arguments(int argc, char **argv)
 	}
 	if ((ft_atoi(argv[1])) > 200 || ((ft_atoi(argv[1])) < 1))
 	{
-		printf("Too many  or to few dudes around the table\n");
+		printf("Too many or to few dudes around the table\n");
 		return (0);
 	}
 	return (1);
@@ -60,8 +60,9 @@ void	create_threads(t_env *philo_info, t_philo *philos)
 	{
 		philos[i].index = i;
         philos[i].philo_info = philo_info;
-        philos[i].state = 0;
+        philos[i].state = 3;
         philos[i].forks_taken = false;
+		philos[i].ate_times = 0;
 		error = pthread_create(&philos[i].thread, NULL, life_cycle, &philos[i]);
 		if (error != 0)
 			printf("Error creating a thread\n");

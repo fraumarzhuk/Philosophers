@@ -6,7 +6,7 @@
 /*   By: mzhukova <mzhukova@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/08 17:35:46 by mzhukova          #+#    #+#             */
-/*   Updated: 2024/08/13 13:47:57 by mzhukova         ###   ########.fr       */
+/*   Updated: 2024/08/13 16:10:11 by mzhukova         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 //states:
 // 1 - eating
 // 2 - sleeping
-// 3 - thinking
+// 3 - thinking (waiting for forks)
 // 4 - dead
 void	print_state(int state, int index)
 {
@@ -38,55 +38,88 @@ void	*life_cycle(void *param)
 	t_philo *philo_arr;
 	
 	philo = (t_philo *)param;
-
 	philo_arr = philo->philo_info->philo_arr;
-	pthread_mutex_lock(&philo->philo_info->mutex);
-	target_index = forks_are_free(philo, philo->philo_info->philo_arr);
-	if (target_index == -1) // forks are already taken by one philo, toggle back
-		philo->forks_taken = false;
-	else if (target_index == 0) // forks are not taken by one philo, toggle back
-		philo->forks_taken = true;
-	else if (target_index >= 0 && target_index < philo->philo_info->num_philos)
+	
+	while (1)
 	{
-		philo->forks_taken = true;
-		philo->philo_info->philo_arr[target_index].forks_taken = true;
-		philo->state = 1;
-		print_state(1, philo->index);
-		usleep(philo->philo_info->time_eat);
-		philo->forks_taken = false;
-		philo->philo_info->philo_arr[target_index].forks_taken = false;
+		usleep(400);
+		if (philo->state == 3) //thinking or was sleeping last time, should try to eat
+		{
+			//check one philo and two philos, add later
+			pthread_mutex_lock(&philo->philo_info->mutex);
+			target_index = forks_are_free(philo, philo->philo_info->philo_arr);
+			if (target_index >= 0 && target_index < philo->philo_info->num_philos) //forks are available
+			{
+				if (!eat_pasta(philo, target_index))
+					return (param);
+				philo->state = 2;
+			}
+			else
+			{
+				philo->state = 3;
+				philo->forks_taken = false;
+				print_state(3, philo->index);	
+				usleep(philo->philo_info->time_sleep);
+				
+			}
+			pthread_mutex_unlock(&philo->philo_info->mutex);
+		}
+		else if (philo->state == 2) //sleeping
+		{
+			print_state(2, philo->index);
+			usleep(philo->philo_info->time_sleep);
+			philo->state = 3; //try to eat next time
+		}
+		// pthread_mutex_unlock(&philo->philo_info->mutex);
 	}
-	else if (target_index == -2)
-	{
-		philo->forks_taken = false;
-		philo->state = 2;
-		usleep(philo->philo_info->time_sleep);
-		print_state(2, philo->index);	
-	}
-	pthread_mutex_unlock(&philo->philo_info->mutex);
 	return (param);
 }
 
 int	forks_are_free(t_philo *philo, t_philo *philo_arr)
 {
 
-	if (philo->philo_info->num_philos == 1)
-	{
-		if ((!philo->forks_taken))
-			return (0); // change the return value for 1 philo. return negative value and toggle
-		return (-1);
-	}
-	else if (philo->index == 0)
+	// if (philo->philo_info->num_philos == 1)
+	// {
+	// 	if ((!philo->forks_taken))
+	// 		return (0); // change the return value for 1 philo. return negative value and toggle
+	// 	return (-1);
+	// }
+	//ALWAYS ON THE LEFT?
+	if (philo->index == 0)
 	{
 		if ((!philo_arr[1].forks_taken))
 			return (1);
 		else if (!philo_arr[philo->philo_info->num_philos - 1].forks_taken)
-			return (philo->philo_info->num_philos);
+			return (philo->philo_info->num_philos - 1);
 	}
 	else if (!philo->forks_taken && (!philo_arr[philo->index - 1].forks_taken))
 		return (philo->index - 1);
 	else if (!philo->forks_taken && (!philo_arr[philo->index + 1].forks_taken))
 		return (philo->index + 1);
-	return (-2);
+	return (-1); // all forks are taken, oopsie
 }
 
+int eat_pasta(t_philo *philo, int target_index)
+{
+	if (philo->ate_times == philo->philo_info->num_of_times_each_eat)
+	{
+		pthread_mutex_unlock(&philo->philo_info->mutex);
+		//pthread_detach(philo->thread);
+		return (0);
+	}
+	else
+	{
+		philo->forks_taken = true;
+		philo->philo_info->philo_arr[target_index].forks_taken = true;
+		// printf("philo %i has taken forks %i and %i\n", philo->index, philo->index, target_index);
+		philo->state = 1;
+		print_state(1, philo->index);
+		philo->ate_times++;
+		//printf("ate times: %i, times left: %i\n\n", philo->ate_times, philo->philo_info->num_of_times_each_eat);
+		usleep(philo->philo_info->time_eat);
+		philo->forks_taken = false;
+		philo->philo_info->philo_arr[target_index].forks_taken = false;
+		return (1);
+	}
+	return (1);
+}
