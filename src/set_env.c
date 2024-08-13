@@ -6,7 +6,7 @@
 /*   By: mzhukova <mzhukova@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/03 16:06:28 by mariannazhu       #+#    #+#             */
-/*   Updated: 2024/08/13 13:35:37 by mzhukova         ###   ########.fr       */
+/*   Updated: 2024/08/13 13:41:01 by mzhukova         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,7 @@ void join_threads(t_env *philo_info, t_philo *philos)
 	i = 0;
 	while (i < philo_info->num_philos)
 	{
-		error = pthread_join(philos[i].thread, philos[i].status);
+		error = pthread_join(philos[i].thread, NULL);
 		if (error != 0)
 			printf("Error joining a thread\n");
 		i++;
