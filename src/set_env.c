@@ -6,7 +6,7 @@
 /*   By: mzhukova <mzhukova@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/03 16:06:28 by mariannazhu       #+#    #+#             */
-/*   Updated: 2024/08/12 17:13:02 by mzhukova         ###   ########.fr       */
+/*   Updated: 2024/08/13 12:58:28 by mzhukova         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,8 @@ void set_arguments(int argc, char **argv, t_env *philo_info)
 	else
 		philo_info->num_of_times_each_eat = 0;
 }
+
+
 void	create_threads(t_env *philo_info, t_philo *philos)
 {
 	int i;
@@ -91,9 +93,9 @@ void toggle_mutexes(t_env *philo_info, t_philo *philos, bool is_init)
 	{
 		if (is_init)
 		{
-			philos[i].mutex = malloc(sizeof(pthread_mutex_t));
-			if (!philos[i].mutex)
-				return ; // rename to int later and make proper error handling
+			//philos[i].mutex = malloc(sizeof(pthread_mutex_t));
+			// if (!philos[i].mutex)
+			// 	printf("doesnt exist\n");
 			error = pthread_mutex_init(philos[i].mutex, NULL);
 		}
 		else if (!is_init)

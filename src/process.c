@@ -6,7 +6,7 @@
 /*   By: mzhukova <mzhukova@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/08 17:35:46 by mzhukova          #+#    #+#             */
-/*   Updated: 2024/08/12 16:58:53 by mzhukova         ###   ########.fr       */
+/*   Updated: 2024/08/13 12:34:14 by mzhukova         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,12 +38,27 @@ void	*life_cycle(void *param)
 	t_philo *philo_arr;
 	
 	philo = (t_philo *)param;
-	if (!philo->philo_info->philo_arr)
-    {
-        printf("Error\n");
+
+	
+    if (!philo) {
+        printf("Error: philo is NULL\n");
         return NULL;
     }
-	philo_arr = philo->philo_info->philo_arr;
+    printf("philo pointer: %p\n", (void *)philo);
+
+    if (!philo->philo_info) {
+        printf("Error: philo_info is NULL\n");
+        return NULL;
+    }
+
+    philo_arr = philo->philo_info->philo_arr;
+    if (!philo_arr) {
+        printf("Error: philo_arr is NULL\n");
+        return NULL;
+    }
+
+
+	// philo_arr = philo->philo_info->philo_arr;
 	pthread_mutex_lock(philo->mutex);
 	target_index = forks_are_free(philo, philo_arr);
 	if (target_index == -1) // forks are already taken by one philo, toggle back
