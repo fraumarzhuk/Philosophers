@@ -6,7 +6,7 @@
 /*   By: mzhukova <mzhukova@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/03 16:06:28 by mariannazhu       #+#    #+#             */
-/*   Updated: 2024/08/13 12:58:28 by mzhukova         ###   ########.fr       */
+/*   Updated: 2024/08/13 13:35:37 by mzhukova         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,10 @@ void	create_threads(t_env *philo_info, t_philo *philos)
 	i = 0;
 	while (i < philo_info->num_philos)
 	{
-		philos[i] = *(t_philo*)malloc(sizeof(t_philo));
+		philos[i].index = i;
+        philos[i].philo_info = philo_info;
+        philos[i].state = 0;
+        philos[i].forks_taken = false;
 		error = pthread_create(&philos[i].thread, NULL, life_cycle, &philos[i]);
 		if (error != 0)
 			printf("Error creating a thread\n");
@@ -83,29 +86,15 @@ void join_threads(t_env *philo_info, t_philo *philos)
 	}
 }
 
-void toggle_mutexes(t_env *philo_info, t_philo *philos, bool is_init)
+void toggle_mutexes(t_env *philo_info, bool is_init)
 {
-	int i;
 	int	error;
 	
-	i = 1;
-	while (i <= philo_info->num_philos)
-	{
-		if (is_init)
-		{
-			//philos[i].mutex = malloc(sizeof(pthread_mutex_t));
-			// if (!philos[i].mutex)
-			// 	printf("doesnt exist\n");
-			error = pthread_mutex_init(philos[i].mutex, NULL);
-		}
-		else if (!is_init)
-		{
-			error = pthread_mutex_destroy(philos[i].mutex);
-			free(philos[i].mutex);
-			philos[i].mutex = NULL;
-		}
-		if (error != 0)
-			printf("Mutex error\n");
-		i++;
-	}
+	error = 0;
+	if (is_init == false)
+		error = pthread_mutex_destroy(&philo_info->mutex);
+	else if (is_init == true)
+		error = pthread_mutex_init(&philo_info->mutex, NULL);
+	if (error != 0)
+		printf("Mutex error\n");
 }

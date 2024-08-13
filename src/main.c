@@ -6,7 +6,7 @@
 /*   By: mzhukova <mzhukova@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/03 15:58:42 by mariannazhu       #+#    #+#             */
-/*   Updated: 2024/08/13 12:55:22 by mzhukova         ###   ########.fr       */
+/*   Updated: 2024/08/13 13:33:54 by mzhukova         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,19 +15,17 @@
 int main(int argc, char **argv)
 {
 	t_env	*philo_info;
-	t_philo	*philos;
 	
 	philo_info = (t_env *)malloc(sizeof(t_env));
 	if (check_arguments(argc, argv)) 
 	{
 		//set timestamp. write a function with gettimeoftheday
 		set_arguments(argc, argv, philo_info);
-		philos = (t_philo *)malloc(sizeof(t_philo) * (philo_info->num_philos));
-		philo_info->philo_arr = philos;
-		toggle_mutexes(philo_info, philos, true);
-		create_threads(philo_info, philos);
-		join_threads(philo_info, philos);
-		toggle_mutexes(philo_info, philos, false);
+		philo_info->philo_arr = (t_philo *)malloc(sizeof(t_philo) * (philo_info->num_philos));
+		toggle_mutexes(philo_info, true);
+		create_threads(philo_info, philo_info->philo_arr);
+		join_threads(philo_info, philo_info->philo_arr);
+		toggle_mutexes(philo_info, false);
 	}
 	else
 	{

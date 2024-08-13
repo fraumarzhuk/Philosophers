@@ -6,7 +6,7 @@
 /*   By: mzhukova <mzhukova@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/08 17:35:46 by mzhukova          #+#    #+#             */
-/*   Updated: 2024/08/13 12:34:14 by mzhukova         ###   ########.fr       */
+/*   Updated: 2024/08/13 13:33:23 by mzhukova         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,41 +39,22 @@ void	*life_cycle(void *param)
 	
 	philo = (t_philo *)param;
 
-	
-    if (!philo) {
-        printf("Error: philo is NULL\n");
-        return NULL;
-    }
-    printf("philo pointer: %p\n", (void *)philo);
-
-    if (!philo->philo_info) {
-        printf("Error: philo_info is NULL\n");
-        return NULL;
-    }
-
-    philo_arr = philo->philo_info->philo_arr;
-    if (!philo_arr) {
-        printf("Error: philo_arr is NULL\n");
-        return NULL;
-    }
-
-
-	// philo_arr = philo->philo_info->philo_arr;
-	pthread_mutex_lock(philo->mutex);
-	target_index = forks_are_free(philo, philo_arr);
+	philo_arr = philo->philo_info->philo_arr;
+	pthread_mutex_lock(&philo->philo_info->mutex);
+	target_index = forks_are_free(philo, philo->philo_info->philo_arr);
 	if (target_index == -1) // forks are already taken by one philo, toggle back
 		philo->forks_taken = false;
-	else if (target_index == -0) // forks are not taken by one philo, toggle back
+	else if (target_index == 0) // forks are not taken by one philo, toggle back
 		philo->forks_taken = true;
 	else if (target_index >= 0)
 	{
 		philo->forks_taken = true;
-		philo_arr[target_index].forks_taken = true;
+		philo->philo_info->philo_arr[target_index].forks_taken = true;
 		philo->state = 1;
 		print_state(1, philo->index);
 		usleep(philo->philo_info->time_eat);
 		philo->forks_taken = false;
-		philo_arr[target_index].forks_taken = false;
+		philo->philo_info->philo_arr[target_index].forks_taken = false;
 	}
 	else if (target_index == -2)
 	{
@@ -81,7 +62,7 @@ void	*life_cycle(void *param)
 		philo->state = 3;
 		print_state(3, philo->index);	
 	}
-	pthread_mutex_unlock(philo->mutex);
+	pthread_mutex_unlock(&philo->philo_info->mutex);
 	return (param);
 }
 

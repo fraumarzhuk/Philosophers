@@ -6,7 +6,7 @@
 /*   By: mzhukova <mzhukova@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/03 15:42:53 by mariannazhu       #+#    #+#             */
-/*   Updated: 2024/08/13 12:54:42 by mzhukova         ###   ########.fr       */
+/*   Updated: 2024/08/13 13:26:33 by mzhukova         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 # include <sys/time.h>
 # include <pthread.h>
 # include <stdbool.h>
+# include <errno.h>
 # include "../libft/libft.h"
 
 typedef struct s_env t_env;
@@ -30,7 +31,6 @@ typedef struct s_philo
 	int	ate_times;
 	bool	forks_taken;
 	void **status;
-	pthread_mutex_t	*mutex;
 	pthread_t thread;
 	t_env	*philo_info;
 }	t_philo;
@@ -47,6 +47,7 @@ typedef struct s_env
 	struct timeval end;
 	unsigned long exec_usec;
 	t_philo *philo_arr;
+	pthread_mutex_t	mutex;
 }	t_env;
 
 
@@ -55,7 +56,7 @@ int		check_arguments(int argc, char **argv);
 void	set_arguments(int argc, char **argv, t_env *philo_info);
 void	create_threads(t_env *philo_info, t_philo *philos);
 void	join_threads(t_env *philo_info, t_philo *philos);
-void	toggle_mutexes(t_env *philo_info, t_philo *philos, bool is_init);
+void	toggle_mutexes(t_env *philo_info, bool is_init);
 
 //process
 void	print_state(int state, int index);
