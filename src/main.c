@@ -6,7 +6,7 @@
 /*   By: mzhukova <mzhukova@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/03 15:58:42 by mariannazhu       #+#    #+#             */
-/*   Updated: 2024/08/13 13:33:54 by mzhukova         ###   ########.fr       */
+/*   Updated: 2024/08/13 17:29:56 by mzhukova         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ int main(int argc, char **argv)
 		create_threads(philo_info, philo_info->philo_arr);
 		join_threads(philo_info, philo_info->philo_arr);
 		toggle_mutexes(philo_info, false);
+		free(philo_info->philo_arr);
 	}
 	else
 	{
@@ -36,4 +37,3 @@ int main(int argc, char **argv)
 	return (0);
 }
 //DELETE LEAK KILLER
-// Do a linked list anyway? so they are circled?

@@ -6,7 +6,7 @@
 /*   By: mzhukova <mzhukova@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/08 17:35:46 by mzhukova          #+#    #+#             */
-/*   Updated: 2024/08/13 16:25:51 by mzhukova         ###   ########.fr       */
+/*   Updated: 2024/08/13 17:29:04 by mzhukova         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	print_state(int state, int index)
 	if (state == 1)
 		printf("Philo %i is eating 🍝, yum yum\n", index);
 	else if (state == 2)
-		printf("Philo %i is sleeping 🛌🏼💤\n", index);
+		printf("Philo %i is sleeping 💤\n", index);
 	else if (state == 3)
 		printf("Philo %i is thinking 💭\n", index);
 	else if (state == 4)
@@ -40,6 +40,12 @@ void	*life_cycle(void *param)
 	philo = (t_philo *)param;
 	philo_arr = philo->philo_info->philo_arr;
 	
+	if (philo->philo_info->num_philos == 1)
+	{
+		usleep(philo->philo_info->time_die);
+		printf("Poor guy had no friends and no forks. died of starvation 🪦\n");
+		return (param);
+	}
 	while (1)
 	{
 		//usleep(400);
@@ -78,14 +84,6 @@ void	*life_cycle(void *param)
 
 int	forks_are_free(t_philo *philo, t_philo *philo_arr)
 {
-
-	// if (philo->philo_info->num_philos == 1)
-	// {
-	// 	if ((!philo->forks_taken))
-	// 		return (0); // change the return value for 1 philo. return negative value and toggle
-	// 	return (-1);
-	// }
-	//ALWAYS ON THE LEFT?
 	if (philo->index == 0)
 	{
 		if ((!philo_arr[1].forks_taken))
@@ -112,11 +110,10 @@ int eat_pasta(t_philo *philo, int target_index)
 	{
 		philo->forks_taken = true;
 		philo->philo_info->philo_arr[target_index].forks_taken = true;
-		// printf("philo %i has taken forks %i and %i\n", philo->index, philo->index, target_index);
+		printf("philo %i has taken forks 🍽️\n", philo->index);
 		philo->state = 1;
 		print_state(1, philo->index);
 		philo->ate_times++;
-		//printf("ate times: %i, times left: %i\n\n", philo->ate_times, philo->philo_info->num_of_times_each_eat);
 		usleep(philo->philo_info->time_eat);
 		philo->forks_taken = false;
 		philo->philo_info->philo_arr[target_index].forks_taken = false;
@@ -124,3 +121,4 @@ int eat_pasta(t_philo *philo, int target_index)
 	}
 	return (1);
 }
+
