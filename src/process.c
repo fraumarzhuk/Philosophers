@@ -6,7 +6,7 @@
 /*   By: mzhukova <mzhukova@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/08 17:35:46 by mzhukova          #+#    #+#             */
-/*   Updated: 2024/08/13 13:33:23 by mzhukova         ###   ########.fr       */
+/*   Updated: 2024/08/13 13:47:57 by mzhukova         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ void	*life_cycle(void *param)
 		philo->forks_taken = false;
 	else if (target_index == 0) // forks are not taken by one philo, toggle back
 		philo->forks_taken = true;
-	else if (target_index >= 0)
+	else if (target_index >= 0 && target_index < philo->philo_info->num_philos)
 	{
 		philo->forks_taken = true;
 		philo->philo_info->philo_arr[target_index].forks_taken = true;
@@ -59,8 +59,9 @@ void	*life_cycle(void *param)
 	else if (target_index == -2)
 	{
 		philo->forks_taken = false;
-		philo->state = 3;
-		print_state(3, philo->index);	
+		philo->state = 2;
+		usleep(philo->philo_info->time_sleep);
+		print_state(2, philo->index);	
 	}
 	pthread_mutex_unlock(&philo->philo_info->mutex);
 	return (param);
@@ -79,7 +80,7 @@ int	forks_are_free(t_philo *philo, t_philo *philo_arr)
 	{
 		if ((!philo_arr[1].forks_taken))
 			return (1);
-		else if (!philo_arr[philo->philo_info->num_philos].forks_taken)
+		else if (!philo_arr[philo->philo_info->num_philos - 1].forks_taken)
 			return (philo->philo_info->num_philos);
 	}
 	else if (!philo->forks_taken && (!philo_arr[philo->index - 1].forks_taken))

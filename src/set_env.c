@@ -6,7 +6,7 @@
 /*   By: mzhukova <mzhukova@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/03 16:06:28 by mariannazhu       #+#    #+#             */
-/*   Updated: 2024/08/13 13:41:01 by mzhukova         ###   ########.fr       */
+/*   Updated: 2024/08/13 13:42:17 by mzhukova         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,9 +65,7 @@ void	create_threads(t_env *philo_info, t_philo *philos)
 		error = pthread_create(&philos[i].thread, NULL, life_cycle, &philos[i]);
 		if (error != 0)
 			printf("Error creating a thread\n");
-		//printf("pthread created. id: %lu\n", (unsigned long int)philos[i].thread);
 		philos[i].index = i;
-		// printf("philo state: %i and index: %i\n", philos[i].state, philos[i].index);
 		i++;
 	}
 }
