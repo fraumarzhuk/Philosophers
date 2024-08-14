@@ -6,7 +6,7 @@
 /*   By: mzhukova <mzhukova@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/14 14:30:50 by mzhukova          #+#    #+#             */
-/*   Updated: 2024/08/14 14:38:40 by mzhukova         ###   ########.fr       */
+/*   Updated: 2024/08/14 14:54:41 by mzhukova         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,11 @@
 
 // void	print_state(int state, int index)
 // {
-// 	if (state == EATING)
+// 	if (state == 1)
 // 		printf("Philo %i is eating 🍝, yum yum\n", index);
-// 	else if (state == SLEEPING)
+// 	else if (state == 2)
 // 		printf("Philo %i is sleeping 💤\n", index);
-// 	else if (state == THINKING)
+// 	else if (state == 3)
 // 		printf("Philo %i is thinking 💭\n", index);
 // 	else if (state == DEAD)
 // 		printf("Philo %i is dead 🪦\n", index);
@@ -34,7 +34,7 @@
 // 	philo = (t_philo *)param;
 // 	philo_arr = philo->philo_info->philo_arr;
 	
-// 	if (philo->philo_info->num_philos == EATING)
+// 	if (philo->philo_info->num_philos == 1)
 // 	{
 // 		usleep(philo->philo_info->time_die);
 // 		printf("Poor guy had no friends and no forks. died of starvation and misery🪦\n");

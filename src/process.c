@@ -6,7 +6,7 @@
 /*   By: mzhukova <mzhukova@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/08 17:35:46 by mzhukova          #+#    #+#             */
-/*   Updated: 2024/08/14 14:46:14 by mzhukova         ###   ########.fr       */
+/*   Updated: 2024/08/14 15:16:04 by mzhukova         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,13 @@
 
 void	print_state(int state, int index)
 {
-	if (state == EATING)
+	if (state == 1)
 		printf("Philo %i is eating 🍝, yum yum\n", index);
-	else if (state == SLEEPING)
+	else if (state == 2)
 		printf("Philo %i is sleeping 💤\n", index);
-	else if (state == THINKING)
+	else if (state == 3)
 		printf("Philo %i is thinking 💭\n", index);
-	else if (state == DEAD)
+	else if (state == 4)
 		printf("Philo %i is dead 🪦\n", index);
 	else if (state == 0)
 		printf("State is not assigned\n");
@@ -34,7 +34,7 @@ void	*life_cycle(void *param)
 	philo = (t_philo *)param;
 	philo_arr = philo->philo_info->philo_arr;
 	
-	if (philo->philo_info->num_philos == EATING)
+	if (philo->philo_info->num_philos == 1)
 	{
 		usleep(philo->philo_info->time_die);
 		printf("Poor guy had no friends and no forks. died of starvation 🪦\n");
@@ -42,16 +42,18 @@ void	*life_cycle(void *param)
 	}
 	while (1)
 	{
-		if (philo->state == THINKING)//thinking or was sleeping last time, should try to eat
+		if (philo->state == 3)//thinking or was sleeping last time, should try to eat
 		{
 			if (!eating_attempt(philo))
 				return (param);	
 		}
-		else if (philo->state == SLEEPING)
+		else if (philo->state == 2)
 		{
-			print_state(SLEEPING, philo->index);
+			pthread_mutex_lock(&philo->philo_info->mutex);
+			print_state(2, philo->index);
+			pthread_mutex_unlock(&philo->philo_info->mutex);
 			usleep(philo->philo_info->time_sleep);
-			philo->state = THINKING;
+			philo->state = 3;
 		}
 	}
 	return (param);
@@ -85,8 +87,8 @@ int eat_pasta(t_philo *philo, int target_index)
 		philo->forks_taken = true;
 		philo->philo_info->philo_arr[target_index].forks_taken = true;
 		printf("philo %i has taken forks 🍽️\n", philo->index);
-		philo->state = EATING;
-		print_state(EATING, philo->index);
+		philo->state = 1;
+		print_state(1, philo->index);
 		philo->ate_times++;
 		usleep(philo->philo_info->time_eat);
 		philo->forks_taken = false;
@@ -101,21 +103,21 @@ int	eating_attempt(t_philo *philo)
 {
 	int		target_index;
 	
-	print_state(THINKING, philo->index);
 	pthread_mutex_lock(&philo->philo_info->mutex);
+	print_state(3, philo->index);
 	target_index = forks_are_free(philo, philo->philo_info->philo_arr);
 	pthread_mutex_unlock(&philo->philo_info->mutex);
 	if (target_index >= 0 && target_index < philo->philo_info->num_philos) //forks are available, went to eat
 	{
 		if (!eat_pasta(philo, target_index))
 			return (0);
-		philo->state = SLEEPING; // ate well, went to sleep;
+		philo->state = 2; // ate well, went to sleep;
 	}
 	else //went to think
 	{
 		pthread_mutex_lock(&philo->philo_info->mutex);
 		philo->forks_taken = false;
-		philo->state = THINKING;
+		philo->state = 3;
 		pthread_mutex_unlock(&philo->philo_info->mutex);	
 	}
 	return (1);

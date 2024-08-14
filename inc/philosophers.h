@@ -6,7 +6,7 @@
 /*   By: mzhukova <mzhukova@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/03 15:42:53 by mariannazhu       #+#    #+#             */
-/*   Updated: 2024/08/14 13:40:27 by mzhukova         ###   ########.fr       */
+/*   Updated: 2024/08/14 14:54:46 by mzhukova         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,13 +35,13 @@ typedef struct s_philo
 	t_env	*philo_info;
 }	t_philo;
 
-typedef enum e_types
-{
-	EATING = 1,
-	SLEEPING = 2,
-	THINKING = 3,
-	DEAD = 4
-}	t_types;
+// typedef enum e_types
+// {
+// 	EATING = 1,
+// 	SLEEPING = 2,
+// 	THINKING = 3,
+// 	DEAD = 4
+// }	t_types;
 
 typedef struct s_env
 {

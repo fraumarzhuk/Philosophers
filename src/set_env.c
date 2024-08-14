@@ -6,7 +6,7 @@
 /*   By: mzhukova <mzhukova@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/03 16:06:28 by mariannazhu       #+#    #+#             */
-/*   Updated: 2024/08/13 17:37:49 by mzhukova         ###   ########.fr       */
+/*   Updated: 2024/08/14 15:17:51 by mzhukova         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,12 +61,14 @@ void	create_threads(t_env *philo_info, t_philo *philos)
 		philos[i].index = i;
         philos[i].philo_info = philo_info;
         philos[i].state = 3;
+		pthread_mutex_lock(&philo_info->mutex);
         philos[i].forks_taken = false;
+		pthread_mutex_unlock(&philo_info->mutex);
 		philos[i].ate_times = 0;
+		philos[i].index = i;
 		error = pthread_create(&philos[i].thread, NULL, life_cycle, &philos[i]);
 		if (error != 0)
 			printf("Error creating a thread\n");
-		philos[i].index = i;
 		i++;
 	}
 }
