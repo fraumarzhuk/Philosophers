@@ -6,7 +6,7 @@
 /*   By: mzhukova <mzhukova@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/08 17:35:46 by mzhukova          #+#    #+#             */
-/*   Updated: 2024/08/14 13:32:46 by mzhukova         ###   ########.fr       */
+/*   Updated: 2024/08/14 13:41:23 by mzhukova         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,6 @@ void	print_state(int state, int index)
 void	*life_cycle(void *param)
 {
 	t_philo *philo;
-	int		target_index;
 	t_philo *philo_arr;
 	
 	philo = (t_philo *)param;
@@ -43,25 +42,10 @@ void	*life_cycle(void *param)
 	}
 	while (1)
 	{
-		if (philo->state == THINKING) //thinking or was sleeping last time, should try to eat
+		if (philo->state == THINKING)//thinking or was sleeping last time, should try to eat
 		{
-			print_state(THINKING, philo->index);
-			pthread_mutex_lock(&philo->philo_info->mutex);
-			target_index = forks_are_free(philo, philo->philo_info->philo_arr);
-			if (target_index >= 0 && target_index < philo->philo_info->num_philos) //forks are available, went to eat
-			{
-				if (!eat_pasta(philo, target_index))
-					return (param);
-				philo->state = SLEEPING; // ate well, went to sleep;
-			}
-			else //went to think
-			{
-				philo->forks_taken = false;
-				//print_state(THINKING, philo->index);
-				philo->state = THINKING;
-				
-			}
-			pthread_mutex_unlock(&philo->philo_info->mutex);
+			if (!eating_attempt(philo))
+				return (param);	
 		}
 		else if (philo->state == SLEEPING)
 		{
@@ -69,7 +53,6 @@ void	*life_cycle(void *param)
 			usleep(philo->philo_info->time_sleep);
 			philo->state = THINKING;
 		}
-		// pthread_mutex_unlock(&philo->philo_info->mutex);
 	}
 	return (param);
 }
@@ -114,3 +97,24 @@ int eat_pasta(t_philo *philo, int target_index)
 	return (1);
 }
 
+int	eating_attempt(t_philo *philo)
+{
+	int		target_index;
+	
+	print_state(THINKING, philo->index);
+	pthread_mutex_lock(&philo->philo_info->mutex);
+	target_index = forks_are_free(philo, philo->philo_info->philo_arr);
+	if (target_index >= 0 && target_index < philo->philo_info->num_philos) //forks are available, went to eat
+	{
+		if (!eat_pasta(philo, target_index))
+			return (0);
+		philo->state = SLEEPING; // ate well, went to sleep;
+	}
+	else //went to think
+	{
+		philo->forks_taken = false;
+		philo->state = THINKING;	
+	}
+	pthread_mutex_unlock(&philo->philo_info->mutex);
+	return (1);
+}

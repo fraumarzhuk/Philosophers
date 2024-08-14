@@ -6,7 +6,7 @@
 /*   By: mzhukova <mzhukova@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/03 15:42:53 by mariannazhu       #+#    #+#             */
-/*   Updated: 2024/08/14 13:28:34 by mzhukova         ###   ########.fr       */
+/*   Updated: 2024/08/14 13:40:27 by mzhukova         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,12 +34,6 @@ typedef struct s_philo
 	pthread_t thread;
 	t_env	*philo_info;
 }	t_philo;
-
-//states:
-// 1 - eating
-// 2 - sleeping
-// 3 - thinking (waiting for forks)
-// 4 - dead
 
 typedef enum e_types
 {
@@ -77,4 +71,5 @@ void	print_state(int state, int index);
 void	*life_cycle(void *param);
 int		forks_are_free(t_philo *philo, t_philo *philo_arr);
 int		eat_pasta(t_philo *philo, int target_index);
+int		eating_attempt(t_philo *philo);
 #endif
