@@ -6,7 +6,7 @@
 /*   By: mzhukova <mzhukova@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/08 17:35:46 by mzhukova          #+#    #+#             */
-/*   Updated: 2024/08/14 13:41:23 by mzhukova         ###   ########.fr       */
+/*   Updated: 2024/08/14 14:46:14 by mzhukova         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,12 +77,11 @@ int eat_pasta(t_philo *philo, int target_index)
 {
 	if (philo->ate_times == philo->philo_info->num_of_times_each_eat)
 	{
-		pthread_mutex_unlock(&philo->philo_info->mutex);
-		//pthread_detach(philo->thread);
 		return (0);
 	}
 	else
 	{
+		pthread_mutex_lock(&philo->philo_info->mutex);
 		philo->forks_taken = true;
 		philo->philo_info->philo_arr[target_index].forks_taken = true;
 		printf("philo %i has taken forks 🍽️\n", philo->index);
@@ -92,6 +91,7 @@ int eat_pasta(t_philo *philo, int target_index)
 		usleep(philo->philo_info->time_eat);
 		philo->forks_taken = false;
 		philo->philo_info->philo_arr[target_index].forks_taken = false;
+		pthread_mutex_unlock(&philo->philo_info->mutex);
 		return (1);
 	}
 	return (1);
@@ -104,6 +104,7 @@ int	eating_attempt(t_philo *philo)
 	print_state(THINKING, philo->index);
 	pthread_mutex_lock(&philo->philo_info->mutex);
 	target_index = forks_are_free(philo, philo->philo_info->philo_arr);
+	pthread_mutex_unlock(&philo->philo_info->mutex);
 	if (target_index >= 0 && target_index < philo->philo_info->num_philos) //forks are available, went to eat
 	{
 		if (!eat_pasta(philo, target_index))
@@ -112,9 +113,10 @@ int	eating_attempt(t_philo *philo)
 	}
 	else //went to think
 	{
+		pthread_mutex_lock(&philo->philo_info->mutex);
 		philo->forks_taken = false;
-		philo->state = THINKING;	
+		philo->state = THINKING;
+		pthread_mutex_unlock(&philo->philo_info->mutex);	
 	}
-	pthread_mutex_unlock(&philo->philo_info->mutex);
 	return (1);
 }
