@@ -6,7 +6,7 @@
 /*   By: mzhukova <mzhukova@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/03 15:42:53 by mariannazhu       #+#    #+#             */
-/*   Updated: 2024/08/13 17:43:11 by mzhukova         ###   ########.fr       */
+/*   Updated: 2024/08/14 13:28:34 by mzhukova         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,14 @@ typedef struct s_philo
 // 2 - sleeping
 // 3 - thinking (waiting for forks)
 // 4 - dead
+
+typedef enum e_types
+{
+	EATING = 1,
+	SLEEPING = 2,
+	THINKING = 3,
+	DEAD = 4
+}	t_types;
 
 typedef struct s_env
 {
