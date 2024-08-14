@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   process.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mzhukova <mzhukova@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mariannazhukova <mariannazhukova@studen    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/08 17:35:46 by mzhukova          #+#    #+#             */
-/*   Updated: 2024/08/14 16:16:50 by mzhukova         ###   ########.fr       */
+/*   Updated: 2024/08/14 17:58:36 by mariannazhu      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,24 +29,14 @@ void	print_state(int state, int index)
 void	*life_cycle(void *param)
 {
 	t_philo *philo;
-	t_philo *philo_arr;
 	
 	philo = (t_philo *)param;
-	philo_arr = philo->philo_info->philo_arr;
-	
-	if (philo->philo_info->num_philos == 1)
-	{
-		usleep(philo->philo_info->time_die);
-		printf("Poor guy had no friends and no forks. died of starvation 🪦\n");
+	if (is_one_philo(philo))
 		return (param);
-	}
 	while (1)
 	{
-		if (philo->state == THINKING)
-		{
-			if (!eating_attempt(philo))
+		if (philo->state == THINKING && (!eating_attempt(philo)))
 				return (param);	
-		}
 		else if (philo->state == SLEEPING)
 		{
 			pthread_mutex_lock(&philo->philo_info->mutex);
@@ -119,4 +109,15 @@ int	eating_attempt(t_philo *philo)
 		pthread_mutex_unlock(&philo->philo_info->mutex);	
 	}
 	return (1);
+}
+
+int is_one_philo(t_philo *philo)
+{
+	if (philo->philo_info->num_philos == 1)
+	{
+		usleep(philo->philo_info->time_die);
+		printf("Poor guy had no friends and no forks. died of starvation 🪦\n");
+		return (1);
+	}
+	return (0);
 }

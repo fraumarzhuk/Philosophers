@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philosophers.h                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mzhukova <mzhukova@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mariannazhukova <mariannazhukova@studen    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/03 15:42:53 by mariannazhu       #+#    #+#             */
-/*   Updated: 2024/08/14 16:14:30 by mzhukova         ###   ########.fr       */
+/*   Updated: 2024/08/14 17:53:29 by mariannazhu      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,4 +72,5 @@ void	*life_cycle(void *param);
 int		forks_are_free(t_philo *philo, t_philo *philo_arr);
 int		eat_pasta(t_philo *philo, int target_index);
 int		eating_attempt(t_philo *philo);
+int		is_one_philo(t_philo *philo);
 #endif

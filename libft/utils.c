@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mzhukova <mzhukova@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mariannazhukova <mariannazhukova@studen    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/04 12:47:06 by mariannazhu       #+#    #+#             */
-/*   Updated: 2024/08/09 16:15:41 by mzhukova         ###   ########.fr       */
+/*   Updated: 2024/08/14 18:04:58 by mariannazhu      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,4 +38,17 @@ int	ft_isnum(char *str)
 		i++;
 	}
 	return (1);
+}
+
+void	*my_malloc(size_t size)
+{
+	void	*ptr;
+
+	ptr = malloc(size);
+	if (!ptr)
+	{
+		printf("Malloc failed. You used all of your memory bruh\n");
+		return (NULL);
+	}
+	return (ptr);
 }

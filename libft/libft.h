@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mzhukova <mzhukova@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mariannazhukova <mariannazhukova@studen    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 22:58:37 by mariannazhu       #+#    #+#             */
-/*   Updated: 2024/08/13 17:35:56 by mzhukova         ###   ########.fr       */
+/*   Updated: 2024/08/14 18:05:22 by mariannazhu      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define LIBFT_H
 
 # include <stdlib.h>
+# include <stdio.h>
 # include <unistd.h>
 # include <limits.h>
 # include "leak_killer/ft_alloc.h"
@@ -58,5 +59,6 @@ size_t	ft_strlen(const char *s);
 
 void	free_split(char **split);
 int		ft_isnum(char *str);
+void	*my_malloc(size_t size);
 
 #endif
