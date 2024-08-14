@@ -24,3 +24,6 @@ todo for the life_cycle:
 	//4. when finished eating, start thinking or sleeping, unlock the forks, times_of eat--
 	//(save num_eat to each philo?)
 	//(how to choose to sleep or to think?)
+
+
+	valgrind --tool=helgrind ./philo 2 800 200 200 2 
