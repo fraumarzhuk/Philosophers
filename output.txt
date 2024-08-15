@@ -1,0 +1,193 @@
+1723741024319 Philo 0 has taken forks 🍽️
+1723741024319 Philo 0 is eating 🍝, yum yum
+1723741024319 Philo 2 has taken forks 🍽️
+1723741024319 Philo 2 is eating 🍝, yum yum
+1723741024519 Philo 1 has taken forks 🍽️
+1723741024519 Philo 1 is eating 🍝, yum yum
+1723741024519 Philo 2 is sleeping 💤
+1723741024519 Philo 0 is sleeping 💤
+1723741024719 Philo 2 is thinking 💭
+1723741024719 Philo 2 has taken forks 🍽️
+1723741024719 Philo 2 is eating 🍝, yum yum
+1723741024719 Philo 0 is thinking 💭
+1723741024719 Philo 0 has taken forks 🍽️
+1723741024719 Philo 0 is eating 🍝, yum yum
+1723741024719 Philo 3 is dead 🪦
+1723741024719 Philo 1 is sleeping 💤
+1723741024919 Philo 1 is thinking 💭
+1723741024919 Philo 2 is sleeping 💤
+1723741024919 Philo 1 has taken forks 🍽️
+1723741024919 Philo 1 is eating 🍝, yum yum
+1723741024919 Philo 0 is sleeping 💤
+1723741025119 Philo 2 is thinking 💭
+1723741025119 Philo 2 has taken forks 🍽️
+1723741025119 Philo 2 is eating 🍝, yum yum
+1723741025119 Philo 0 is thinking 💭
+1723741025119 Philo 1 is sleeping 💤
+1723741025119 Philo 0 has taken forks 🍽️
+1723741025119 Philo 0 is eating 🍝, yum yum
+1723741025319 Philo 1 is thinking 💭
+1723741025319 Philo 1 has taken forks 🍽️
+1723741025319 Philo 1 is eating 🍝, yum yum
+1723741025319 Philo 0 is sleeping 💤
+1723741025319 Philo 2 is sleeping 💤
+1723741025519 Philo 2 is thinking 💭
+1723741025519 Philo 2 has taken forks 🍽️
+1723741025519 Philo 2 is eating 🍝, yum yum
+1723741025519 Philo 0 is thinking 💭
+1723741025519 Philo 0 has taken forks 🍽️
+1723741025519 Philo 0 is eating 🍝, yum yum
+1723741025519 Philo 1 is sleeping 💤
+1723741025719 Philo 0 is sleeping 💤
+1723741025719 Philo 1 is thinking 💭
+1723741025719 Philo 1 has taken forks 🍽️
+1723741025719 Philo 1 is eating 🍝, yum yum
+1723741025719 Philo 2 is sleeping 💤
+1723741025919 Philo 0 is thinking 💭
+1723741025919 Philo 0 has taken forks 🍽️
+1723741025919 Philo 0 is eating 🍝, yum yum
+1723741025919 Philo 2 is thinking 💭
+1723741025919 Philo 2 has taken forks 🍽️
+1723741025919 Philo 2 is eating 🍝, yum yum
+1723741025919 Philo 1 is sleeping 💤
+1723741026119 Philo 0 is sleeping 💤
+1723741026119 Philo 1 is thinking 💭
+1723741026119 Philo 1 has taken forks 🍽️
+1723741026119 Philo 1 is eating 🍝, yum yum
+1723741026119 Philo 2 is sleeping 💤
+1723741026319 Philo 1 is sleeping 💤
+1723741026319 Philo 0 is thinking 💭
+1723741026319 Philo 0 has taken forks 🍽️
+1723741026319 Philo 0 is eating 🍝, yum yum
+1723741026319 Philo 2 is thinking 💭
+1723741026319 Philo 2 has taken forks 🍽️
+1723741026319 Philo 2 is eating 🍝, yum yum
+1723741026519 Philo 1 is thinking 💭
+1723741026519 Philo 1 has taken forks 🍽️
+1723741026519 Philo 1 is eating 🍝, yum yum
+1723741026519 Philo 2 is sleeping 💤
+1723741026519 Philo 0 is sleeping 💤
+1723741026719 Philo 0 is thinking 💭
+1723741026719 Philo 0 has taken forks 🍽️
+1723741026719 Philo 0 is eating 🍝, yum yum
+1723741026719 Philo 2 is thinking 💭
+1723741026719 Philo 2 has taken forks 🍽️
+1723741026719 Philo 2 is eating 🍝, yum yum
+1723741026719 Philo 1 is sleeping 💤
+1723741026919 Philo 1 is thinking 💭
+1723741026919 Philo 1 has taken forks 🍽️
+1723741026919 Philo 1 is eating 🍝, yum yum
+1723741026919 Philo 2 is sleeping 💤
+1723741026919 Philo 0 is sleeping 💤
+1723741027119 Philo 1 is sleeping 💤
+1723741027119 Philo 0 is thinking 💭
+1723741027119 Philo 0 has taken forks 🍽️
+1723741027119 Philo 0 is eating 🍝, yum yum
+1723741027119 Philo 2 is thinking 💭
+1723741027119 Philo 2 has taken forks 🍽️
+1723741027119 Philo 2 is eating 🍝, yum yum
+1723741027319 Philo 2 is sleeping 💤
+1723741027319 Philo 1 is thinking 💭
+1723741027319 Philo 1 has taken forks 🍽️
+1723741027319 Philo 1 is eating 🍝, yum yum
+1723741027319 Philo 0 is sleeping 💤
+1723741027519 Philo 0 is thinking 💭
+1723741027519 Philo 0 has taken forks 🍽️
+1723741027519 Philo 0 is eating 🍝, yum yum
+1723741027519 Philo 2 is thinking 💭
+1723741027519 Philo 2 has taken forks 🍽️
+1723741027519 Philo 2 is eating 🍝, yum yum
+1723741027519 Philo 1 is sleeping 💤
+1723741027719 Philo 2 is sleeping 💤
+1723741027719 Philo 0 is sleeping 💤
+1723741027719 Philo 1 is thinking 💭
+1723741027719 Philo 1 has taken forks 🍽️
+1723741027719 Philo 1 is eating 🍝, yum yum
+1723741027919 Philo 0 is thinking 💭
+1723741027919 Philo 0 has taken forks 🍽️
+1723741027919 Philo 0 is eating 🍝, yum yum
+1723741027919 Philo 2 is thinking 💭
+1723741027919 Philo 2 has taken forks 🍽️
+1723741027919 Philo 2 is eating 🍝, yum yum
+1723741027919 Philo 1 is sleeping 💤
+1723741028119 Philo 0 is sleeping 💤
+1723741028119 Philo 1 is thinking 💭
+1723741028119 Philo 2 is sleeping 💤
+1723741028119 Philo 1 has taken forks 🍽️
+1723741028119 Philo 1 is eating 🍝, yum yum
+1723741028319 Philo 0 is thinking 💭
+1723741028319 Philo 0 has taken forks 🍽️
+1723741028319 Philo 0 is eating 🍝, yum yum
+1723741028319 Philo 2 is thinking 💭
+1723741028319 Philo 1 is sleeping 💤
+1723741028319 Philo 2 has taken forks 🍽️
+1723741028319 Philo 2 is eating 🍝, yum yum
+1723741028519 Philo 2 is sleeping 💤
+1723741028519 Philo 0 is sleeping 💤
+1723741028519 Philo 1 is thinking 💭
+1723741028519 Philo 1 has taken forks 🍽️
+1723741028519 Philo 1 is eating 🍝, yum yum
+1723741028719 Philo 2 is thinking 💭
+1723741028719 Philo 2 has taken forks 🍽️
+1723741028719 Philo 2 is eating 🍝, yum yum
+1723741028719 Philo 0 is thinking 💭
+1723741028719 Philo 1 is sleeping 💤
+1723741028719 Philo 0 has taken forks 🍽️
+1723741028719 Philo 0 is eating 🍝, yum yum
+1723741028919 Philo 1 is thinking 💭
+1723741028919 Philo 0 is sleeping 💤
+1723741028919 Philo 1 has taken forks 🍽️
+1723741028919 Philo 1 is eating 🍝, yum yum
+1723741028919 Philo 2 is sleeping 💤
+1723741029119 Philo 1 is sleeping 💤
+1723741029119 Philo 0 is thinking 💭
+1723741029119 Philo 0 has taken forks 🍽️
+1723741029119 Philo 0 is eating 🍝, yum yum
+1723741029119 Philo 2 is thinking 💭
+1723741029119 Philo 2 has taken forks 🍽️
+1723741029119 Philo 2 is eating 🍝, yum yum
+1723741029319 Philo 1 is thinking 💭
+1723741029319 Philo 2 is sleeping 💤
+1723741029319 Philo 1 has taken forks 🍽️
+1723741029319 Philo 1 is eating 🍝, yum yum
+1723741029319 Philo 0 is sleeping 💤
+1723741029519 Philo 2 is thinking 💭
+1723741029519 Philo 2 has taken forks 🍽️
+1723741029519 Philo 2 is eating 🍝, yum yum
+1723741029519 Philo 0 is thinking 💭
+1723741029519 Philo 0 has taken forks 🍽️
+1723741029519 Philo 0 is eating 🍝, yum yum
+1723741029519 Philo 1 is sleeping 💤
+1723741029719 Philo 1 is thinking 💭
+1723741029719 Philo 1 has taken forks 🍽️
+1723741029719 Philo 1 is eating 🍝, yum yum
+1723741029719 Philo 2 is sleeping 💤
+1723741029719 Philo 0 is sleeping 💤
+1723741029919 Philo 0 is thinking 💭
+1723741029919 Philo 0 has taken forks 🍽️
+1723741029919 Philo 0 is eating 🍝, yum yum
+1723741029919 Philo 2 is thinking 💭
+1723741029919 Philo 2 has taken forks 🍽️
+1723741029919 Philo 2 is eating 🍝, yum yum
+1723741029919 Philo 1 is sleeping 💤
+1723741030119 Philo 2 is sleeping 💤
+1723741030119 Philo 0 is sleeping 💤
+1723741030119 Philo 1 is thinking 💭
+1723741030119 Philo 1 has taken forks 🍽️
+1723741030119 Philo 1 is eating 🍝, yum yum
+1723741030319 Philo 2 is thinking 💭
+1723741030319 Philo 2 has taken forks 🍽️
+1723741030319 Philo 2 is eating 🍝, yum yum
+1723741030319 Philo 0 is thinking 💭
+1723741030319 Philo 1 is sleeping 💤
+1723741030319 Philo 0 has taken forks 🍽️
+1723741030319 Philo 0 is eating 🍝, yum yum
+1723741030519 Philo 1 is thinking 💭
+1723741030519 Philo 2 is sleeping 💤
+1723741030519 Philo 1 has taken forks 🍽️
+1723741030519 Philo 1 is eating 🍝, yum yum
+1723741030519 Philo 0 is sleeping 💤
+1723741030719 Philo 0 is thinking 💭
+1723741030719 Philo 0 has taken forks 🍽️
+1723741030719 Philo 0 is eating 🍝, yum yum
+1723741030719 Philo 1 

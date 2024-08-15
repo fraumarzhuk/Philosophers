@@ -6,7 +6,7 @@
 /*   By: mzhukova <mzhukova@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/08 17:35:46 by mzhukova          #+#    #+#             */
-/*   Updated: 2024/08/15 18:19:59 by mzhukova         ###   ########.fr       */
+/*   Updated: 2024/08/15 18:58:25 by mzhukova         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ void	*life_cycle(void *param)
 		return (param);
 	while (1)
 	{
-		if (philo->state == THINKING && (!eating_attempt(philo)) )
+		if (philo->state == THINKING && (!eating_attempt(philo))) // were thinking before and 
 				return (param);	
 		else if (philo->state == SLEEPING && !is_dead(philo))
 		{
@@ -49,6 +49,7 @@ void	*life_cycle(void *param)
 			if (is_dead(philo))
 				return (param);
 			philo->state = THINKING;
+			ft_usleep(100);
 			print_state(3, philo->index);
 		}
 	}
@@ -100,7 +101,6 @@ int	eating_attempt(t_philo *philo)
 	int		target_index;
 	
 	pthread_mutex_lock(&philo->philo_info->mutex);
-	// print_state(3, philo->index);
 	target_index = forks_are_free(philo, philo->philo_info->philo_arr);
 	pthread_mutex_unlock(&philo->philo_info->mutex);
 	if (target_index >= 0 && target_index < philo->philo_info->num_philos)
@@ -114,8 +114,7 @@ int	eating_attempt(t_philo *philo)
 		pthread_mutex_lock(&philo->philo_info->mutex);
 		philo->forks_taken = false;
 		philo->state = THINKING;
-		// print_state(THINKING, philo->index);
-		pthread_mutex_unlock(&philo->philo_info->mutex);	
+		pthread_mutex_unlock(&philo->philo_info->mutex);
 	}
 	return (1);
 }
