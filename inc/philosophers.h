@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philosophers.h                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mariannazhukova <mariannazhukova@studen    +#+  +:+       +#+        */
+/*   By: mzhukova <mzhukova@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/03 15:42:53 by mariannazhu       #+#    #+#             */
-/*   Updated: 2024/08/14 17:53:29 by mariannazhu      ###   ########.fr       */
+/*   Updated: 2024/08/15 16:20:30 by mzhukova         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,13 +26,13 @@ typedef struct s_env t_env;
 
 typedef struct s_philo
 {
-	int	index;
-	int	state;
-	int	ate_times;
-	bool	forks_taken;
-	//void **status;
-	pthread_t thread;
-	t_env	*philo_info;
+	int			index;
+	int			state;
+	int			ate_times;
+	bool		forks_taken;
+	size_t		time_last_meal;
+	pthread_t 	thread;
+	t_env		*philo_info;
 }	t_philo;
 
 typedef enum e_types
@@ -45,16 +45,13 @@ typedef enum e_types
 
 typedef struct s_env
 {
-	int	time_stamp;
-	int	num_philos;
-	int	time_die;
-	int time_eat;
-	int time_sleep;
-	int	num_of_times_each_eat;
-	struct timeval start;
-	struct timeval end;
-	unsigned long exec_usec;
-	t_philo *philo_arr;
+	int				num_philos;
+	size_t			time_die;
+	size_t 			time_eat;
+	size_t 			time_sleep;
+	int				num_of_times_each_eat;
+	unsigned long 	exec_usec;
+	t_philo 		*philo_arr;
 	pthread_mutex_t	mutex;
 }	t_env;
 
@@ -73,4 +70,9 @@ int		forks_are_free(t_philo *philo, t_philo *philo_arr);
 int		eat_pasta(t_philo *philo, int target_index);
 int		eating_attempt(t_philo *philo);
 int		is_one_philo(t_philo *philo);
-#endif
+
+//utils
+size_t	get_current_time(void);
+int		ft_usleep(size_t milliseconds);
+int		is_dead(t_philo *philo);
+# endif

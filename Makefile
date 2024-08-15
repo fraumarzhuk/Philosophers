@@ -11,6 +11,7 @@ CFLAGS = -Wall -Wextra -Werror -g
 SRCS =	src/main.c \
 		src/set_env.c \
 		src/process.c \
+		src/utils.c \
 
 LIBFT_DIR = ./libft
 LIBFT = ./libft/libft.a

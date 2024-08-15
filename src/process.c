@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   process.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mariannazhukova <mariannazhukova@studen    +#+  +:+       +#+        */
+/*   By: mzhukova <mzhukova@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/08 17:35:46 by mzhukova          #+#    #+#             */
-/*   Updated: 2024/08/14 17:58:36 by mariannazhu      ###   ########.fr       */
+/*   Updated: 2024/08/15 16:24:49 by mzhukova         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void	print_state(int state, int index)
 
 void	*life_cycle(void *param)
 {
-	t_philo *philo;
+	t_philo *philo; 
 	
 	philo = (t_philo *)param;
 	if (is_one_philo(philo))
@@ -37,12 +37,14 @@ void	*life_cycle(void *param)
 	{
 		if (philo->state == THINKING && (!eating_attempt(philo)))
 				return (param);	
-		else if (philo->state == SLEEPING)
+		else if (philo->state == SLEEPING && !is_dead(philo))
 		{
 			pthread_mutex_lock(&philo->philo_info->mutex);
 			print_state(2, philo->index);
 			pthread_mutex_unlock(&philo->philo_info->mutex);
-			usleep(philo->philo_info->time_sleep);
+			ft_usleep(philo->philo_info->time_sleep);
+			if (is_dead(philo))
+				return (param);
 			philo->state = THINKING;
 		}
 	}
@@ -67,7 +69,7 @@ int	forks_are_free(t_philo *philo, t_philo *philo_arr)
 
 int eat_pasta(t_philo *philo, int target_index)
 {
-	if (philo->ate_times == philo->philo_info->num_of_times_each_eat)
+	if (philo->ate_times == philo->philo_info->num_of_times_each_eat || is_dead(philo))
 		return (0);
 	else
 	{
@@ -75,9 +77,10 @@ int eat_pasta(t_philo *philo, int target_index)
 		philo->forks_taken = true;
 		philo->philo_info->philo_arr[target_index].forks_taken = true;
 		printf("philo %i has taken forks 🍽️\n", philo->index);
-		print_state(1, philo->index);
+		print_state(EATING, philo->index);
 		philo->ate_times++;
-		usleep(philo->philo_info->time_eat);
+		ft_usleep(philo->philo_info->time_eat);
+		philo->time_last_meal = get_current_time();
 		philo->forks_taken = false;
 		philo->philo_info->philo_arr[target_index].forks_taken = false;
 		pthread_mutex_unlock(&philo->philo_info->mutex);
@@ -96,7 +99,7 @@ int	eating_attempt(t_philo *philo)
 	pthread_mutex_unlock(&philo->philo_info->mutex);
 	if (target_index >= 0 && target_index < philo->philo_info->num_philos)
 	{
-		if (!eat_pasta(philo, target_index))
+		if (!eat_pasta(philo, target_index) || is_dead(philo))
 			return (0);
 		philo->state = SLEEPING;
 	}
@@ -105,7 +108,6 @@ int	eating_attempt(t_philo *philo)
 		pthread_mutex_lock(&philo->philo_info->mutex);
 		philo->forks_taken = false;
 		philo->state = THINKING;
-		printf("went thinking\n");
 		pthread_mutex_unlock(&philo->philo_info->mutex);	
 	}
 	return (1);
@@ -115,7 +117,7 @@ int is_one_philo(t_philo *philo)
 {
 	if (philo->philo_info->num_philos == 1)
 	{
-		usleep(philo->philo_info->time_die);
+		ft_usleep(philo->philo_info->time_die);
 		printf("Poor guy had no friends and no forks. died of starvation 🪦\n");
 		return (1);
 	}

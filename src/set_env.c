@@ -6,7 +6,7 @@
 /*   By: mzhukova <mzhukova@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/03 16:06:28 by mariannazhu       #+#    #+#             */
-/*   Updated: 2024/08/14 15:17:51 by mzhukova         ###   ########.fr       */
+/*   Updated: 2024/08/15 16:00:25 by mzhukova         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,9 +41,9 @@ int	check_arguments(int argc, char **argv)
 void	set_arguments(int argc, char **argv, t_env *philo_info)
 {
 	philo_info->num_philos = ft_atoi(argv[1]);
-	philo_info->time_die = ft_atoi(argv[2]);
-	philo_info->time_eat = ft_atoi(argv[3]);
-	philo_info->time_sleep = ft_atoi(argv[4]);
+	philo_info->time_die = (size_t)ft_atoi(argv[2]);
+	philo_info->time_eat = (size_t)ft_atoi(argv[3]);
+	philo_info->time_sleep = (size_t)ft_atoi(argv[4]);
 	if (argc == 6)
 		philo_info->num_of_times_each_eat = ft_atoi(argv[5]);
 	else
