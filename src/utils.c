@@ -6,7 +6,7 @@
 /*   By: mzhukova <mzhukova@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/15 15:15:40 by mzhukova          #+#    #+#             */
-/*   Updated: 2024/08/15 18:53:25 by mzhukova         ###   ########.fr       */
+/*   Updated: 2024/08/15 19:13:57 by mzhukova         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,8 @@ int is_dead(t_philo *philo)
 	if ((now - time_last_meal) >= time_die)
 	{
 		pthread_mutex_lock(&philo->philo_info->mutex);
-		print_state(DEAD, philo->index);
+		print_state(DEAD, philo->index, philo);
+		philo->philo_info->all_alive = false;
 		pthread_mutex_unlock(&philo->philo_info->mutex);
 		return (1);	
 	}

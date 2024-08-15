@@ -6,7 +6,7 @@
 /*   By: mzhukova <mzhukova@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/03 15:42:53 by mariannazhu       #+#    #+#             */
-/*   Updated: 2024/08/15 16:20:30 by mzhukova         ###   ########.fr       */
+/*   Updated: 2024/08/15 19:13:10 by mzhukova         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,7 @@ typedef struct s_env
 	int				num_of_times_each_eat;
 	unsigned long 	exec_usec;
 	t_philo 		*philo_arr;
+	bool			all_alive;
 	pthread_mutex_t	mutex;
 }	t_env;
 
@@ -64,7 +65,7 @@ void	join_threads(t_env *philo_info, t_philo *philos);
 void	toggle_mutexes(t_env *philo_info, bool is_init);
 
 //process
-void	print_state(int state, int index);
+void	print_state(int state, int index, t_philo *philo);
 void	*life_cycle(void *param);
 int		forks_are_free(t_philo *philo, t_philo *philo_arr);
 int		eat_pasta(t_philo *philo, int target_index);
