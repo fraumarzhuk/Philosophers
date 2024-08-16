@@ -6,7 +6,7 @@
 /*   By: mzhukova <mzhukova@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/15 15:15:40 by mzhukova          #+#    #+#             */
-/*   Updated: 2024/08/15 19:13:57 by mzhukova         ###   ########.fr       */
+/*   Updated: 2024/08/16 15:32:34 by mzhukova         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ size_t	get_current_time(void)
 	if (gettimeofday(&time, NULL) == -1)
 		printf("Get time error \n");
 	return ((time.tv_sec * 1000) + (time.tv_usec/1000));
+	
 }
 int	ft_usleep(size_t milliseconds)
 {
@@ -27,7 +28,7 @@ int	ft_usleep(size_t milliseconds)
 	
 	start = get_current_time();
 	while ((get_current_time() - start) < milliseconds)
-		usleep(milliseconds);
+		usleep(500);
 	return (0);
 }
 int is_dead(t_philo *philo)
@@ -39,10 +40,6 @@ int is_dead(t_philo *philo)
 	now = get_current_time();
 	time_last_meal = philo->time_last_meal;
 	time_die = philo->philo_info->time_die;
-	// size_t diff = now - time_last_meal;
-	
-	//printf("since last meal: %zu\ntime die: %zu\n\n", diff, time_die);
-	// printf("cur time: %zu\ntime last meal: %zu\n, time die: %zu\n\n", now, time_last_meal, time_die);
 	if ((now - time_last_meal) >= time_die)
 	{
 		pthread_mutex_lock(&philo->philo_info->mutex);

@@ -1,3 +1,5 @@
 *.o
 philosophers.dsYm
 .vscode
+philosophers
+libft.a

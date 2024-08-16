@@ -6,7 +6,7 @@
 /*   By: mzhukova <mzhukova@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/08 17:35:46 by mzhukova          #+#    #+#             */
-/*   Updated: 2024/08/15 19:13:33 by mzhukova         ###   ########.fr       */
+/*   Updated: 2024/08/16 15:28:18 by mzhukova         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,13 +20,13 @@ void	print_state(int state, int index, t_philo *philo)
 	if (philo->philo_info->all_alive)
 	{
 		if (state == EATING)
-			printf("%zu Philo %i is eating 🍝, yum yum\n", time, index);
+			printf("%zu Philo %i is eating 🍝, yum yum\n", time - philo->time_begin, index);
 		else if (state == SLEEPING)
-			printf("%zu Philo %i is sleeping 💤\n", time, index);
+			printf("%zu Philo %i is sleeping 💤\n", time - philo->time_begin, index);
 		else if (state == THINKING)
-			printf("%zu Philo %i is thinking 💭\n", time, index);
+			printf("%zu Philo %i is thinking 💭\n", time - philo->time_begin, index);
 		else if (state == DEAD)
-			printf("%zu Philo %i is dead 🪦\n", time, index);
+			printf("%zu Philo %i is dead 🪦\n", time - philo->time_begin, index);
 		else if (state == 0)
 			printf("State is not assigned\n");	
 	}
@@ -53,7 +53,7 @@ void	*life_cycle(void *param)
 			if (is_dead(philo))
 				return (param);
 			philo->state = THINKING;
-			ft_usleep(100);
+			ft_usleep(1);
 			print_state(3, philo->index, philo);
 		}
 	}
@@ -85,7 +85,7 @@ int eat_pasta(t_philo *philo, int target_index)
 		pthread_mutex_lock(&philo->philo_info->mutex);
 		philo->forks_taken = true;
 		philo->philo_info->philo_arr[target_index].forks_taken = true;
-		printf("%zu Philo %i has taken forks 🍽️\n", get_current_time(), philo->index);
+		printf("%zu Philo %i has taken forks 🍽️\n", get_current_time() - philo->time_begin, philo->index);
 		print_state(EATING, philo->index, philo);
 		philo->ate_times++;
 		pthread_mutex_unlock(&philo->philo_info->mutex);

@@ -1,1 +1,40 @@
-Incorrect arguments
+0 Philo 0 has taken forks 🍽️
+0 Philo 0 is eating 🍝, yum yum
+0 Philo 1 has taken forks 🍽️
+0 Philo 1 is eating 🍝, yum yum
+0 Philo 2 has taken forks 🍽️
+0 Philo 2 is eating 🍝, yum yum
+0 Philo 3 has taken forks 🍽️
+0 Philo 3 is eating 🍝, yum yum
+200 Philo 1 is sleeping 💤
+200 Philo 0 is sleeping 💤
+200 Philo 3 is sleeping 💤
+200 Philo 4 has taken forks 🍽️
+200 Philo 4 is eating 🍝, yum yum
+200 Philo 2 is sleeping 💤
+400 Philo 4 is sleeping 💤
+401 Philo 2 is thinking 💭
+401 Philo 2 has taken forks 🍽️
+401 Philo 2 is eating 🍝, yum yum
+401 Philo 0 is thinking 💭
+401 Philo 0 has taken forks 🍽️
+401 Philo 0 is eating 🍝, yum yum
+401 Philo 3 is thinking 💭
+401 Philo 1 is thinking 💭
+601 Philo 4 is thinking 💭
+601 Philo 4 has taken forks 🍽️
+601 Philo 4 is eating 🍝, yum yum
+601 Philo 1 has taken forks 🍽️
+601 Philo 1 is eating 🍝, yum yum
+601 Philo 3 has taken forks 🍽️
+601 Philo 3 is eating 🍝, yum yum
+601 Philo 2 is sleeping 💤
+601 Philo 0 is sleeping 💤
+801 Philo 4 is sleeping 💤
+801 Philo 3 is sleeping 💤
+801 Philo 1 is sleeping 💤
+802 Philo 0 is thinking 💭
+802 Philo 2 is thinking 💭
+1002 Philo 4 is thinking 💭
+1002 Philo 3 is thinking 💭
+1002 Philo 1 is thinking 💭
