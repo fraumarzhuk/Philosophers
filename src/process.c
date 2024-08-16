@@ -6,7 +6,7 @@
 /*   By: mzhukova <mzhukova@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/08 17:35:46 by mzhukova          #+#    #+#             */
-/*   Updated: 2024/08/16 17:51:16 by mzhukova         ###   ########.fr       */
+/*   Updated: 2024/08/16 18:14:34 by mzhukova         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,12 +51,11 @@ void	*life_cycle(void *param)
 		if (alive)
 		{
 			philo->state = eating_attempt(philo);
-			if (philo->state == THINKING)
+			if (philo->state == THINKING && philo->time_last_meal == 10)
 			{
 				print_state(THINKING, philo->index, philo);
-				ft_usleep(100);
 			}
-			else if (philo->state == SLEEPING)
+			if (philo->state == SLEEPING)
 			{
 				print_state(SLEEPING, philo->index, philo);
 				ft_usleep(philo->philo_info->time_sleep);
