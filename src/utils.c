@@ -6,7 +6,7 @@
 /*   By: mzhukova <mzhukova@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/15 15:15:40 by mzhukova          #+#    #+#             */
-/*   Updated: 2024/08/16 16:46:24 by mzhukova         ###   ########.fr       */
+/*   Updated: 2024/08/16 17:37:52 by mzhukova         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,8 +45,8 @@ int is_dead(t_philo *philo)
 	// printf("cur time: %zu\ntime last meal: %zu\n, time die: %zu\n\n", now, time_last_meal, time_die);
 	if ((now - time_last_meal) >= time_die)
 	{
-		pthread_mutex_lock(&philo->philo_info->mutex);
 		print_state(DEAD, philo->index, philo);
+		pthread_mutex_lock(&philo->philo_info->mutex);
 		philo->philo_info->all_alive = false;
 		pthread_mutex_unlock(&philo->philo_info->mutex);
 		return (1);	
