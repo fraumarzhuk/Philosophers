@@ -1,1 +1,15 @@
-Incorrect arguments
+0 Philo 0 has taken forks 🍽️
+0 Philo 0 is eating 🍝, yum yum. Time since last meal: 0
+200 Philo 0 is sleeping 💤 Time since last meal: 0
+200 Philo 1 has taken forks 🍽️
+200 Philo 1 is eating 🍝, yum yum. Time since last meal: 200
+400 Philo 0 is thinking 💭 Time since last meal: 200
+400 Philo 0 has taken forks 🍽️
+400 Philo 0 is eating 🍝, yum yum. Time since last meal: 200
+600 Philo 0 is sleeping 💤 Time since last meal: 0
+400 Philo 3 has taken forks 🍽️
+400 Philo 3 is eating 🍝, yum yum. Time since last meal: 400
+600 Philo 3 is sleeping 💤 Time since last meal: 0
+dead-check, philo: 2
+800 Philo 2 is dead. Time since last meal: 800
+🪦

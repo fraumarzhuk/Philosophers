@@ -6,7 +6,7 @@
 /*   By: mzhukova <mzhukova@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/03 15:42:53 by mariannazhu       #+#    #+#             */
-/*   Updated: 2024/08/15 19:13:10 by mzhukova         ###   ########.fr       */
+/*   Updated: 2024/08/16 16:12:28 by mzhukova         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ typedef struct s_philo
 	int			ate_times;
 	bool		forks_taken;
 	size_t		time_last_meal;
+	size_t			time_begin;
 	pthread_t 	thread;
 	t_env		*philo_info;
 }	t_philo;
