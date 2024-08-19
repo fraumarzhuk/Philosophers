@@ -6,7 +6,7 @@
 /*   By: mzhukova <mzhukova@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/08 17:35:46 by mzhukova          #+#    #+#             */
-/*   Updated: 2024/08/19 21:10:16 by mzhukova         ###   ########.fr       */
+/*   Updated: 2024/08/19 21:20:01 by mzhukova         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,11 +93,11 @@ int eat_pasta(t_philo *philo, int target_index)
 		philo->ate_times++;
 		ft_usleep(philo->philo_info->time_eat);
 		philo->time_last_meal = get_current_time();
+		pthread_mutex_lock(&philo->philo_info->mutex);
+		philo->forks_taken = false;
+		philo->philo_info->philo_arr[target_index].forks_taken = false;
+		pthread_mutex_unlock(&philo->philo_info->mutex);
 		philo->state = SLEEPING;
-		// pthread_mutex_lock(&philo->philo_info->mutex);
-		// philo->forks_taken = false;
-		// philo->philo_info->philo_arr[target_index].forks_taken = false;
-		// pthread_mutex_unlock(&philo->philo_info->mutex);
 		return (1);
 	}
 	return (1);
@@ -107,9 +107,9 @@ int	eating_attempt(t_philo *philo)
 {
 	//int		target_index;
 	
-	//pthread_mutex_lock(&philo->philo_info->mutex);
+	// pthread_mutex_lock(&philo->philo_info->mutex);
 	philo->target_index = forks_are_free(philo, philo->philo_info->philo_arr);
-	//pthread_mutex_unlock(&philo->philo_info->mutex);
+	// pthread_mutex_unlock(&philo->philo_info->mutex);
 	if (philo->target_index >= 0 && philo->target_index < philo->philo_info->num_philos)
 	{
 		if (!eat_pasta(philo, philo->target_index) || is_dead(philo))
@@ -117,13 +117,13 @@ int	eating_attempt(t_philo *philo)
 		philo->state = SLEEPING;
 		// return (1);
 	}
-	else
-	{
-		pthread_mutex_lock(&philo->philo_info->mutex);
-		philo->forks_taken = false;
-		pthread_mutex_unlock(&philo->philo_info->mutex);
-		//philo->state = THINKING;
-	}
+	// else
+	// {
+	// 	pthread_mutex_lock(&philo->philo_info->mutex);
+	// 	philo->forks_taken = false;
+	// 	pthread_mutex_unlock(&philo->philo_info->mutex);
+	// 	//philo->state = THINKING;
+	// }
 	return (1);
 }
 
