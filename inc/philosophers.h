@@ -6,7 +6,7 @@
 /*   By: mzhukova <mzhukova@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/03 15:42:53 by mariannazhu       #+#    #+#             */
-/*   Updated: 2024/08/16 15:21:25 by mzhukova         ###   ########.fr       */
+/*   Updated: 2024/08/19 15:00:21 by mzhukova         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ typedef struct s_philo
 	int			ate_times;
 	bool		forks_taken;
 	size_t		time_last_meal;
-	size_t		time_begin;
+	// size_t		time_begin;
 	pthread_t 	thread;
 	t_env		*philo_info;
 }	t_philo;
@@ -54,6 +54,7 @@ typedef struct s_env
 	unsigned long 	exec_usec;
 	t_philo 		*philo_arr;
 	bool			all_alive;
+	size_t			time_begin;
 	pthread_mutex_t	mutex;
 }	t_env;
 
