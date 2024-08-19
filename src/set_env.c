@@ -6,7 +6,7 @@
 /*   By: mzhukova <mzhukova@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/03 16:06:28 by mariannazhu       #+#    #+#             */
-/*   Updated: 2024/08/19 15:07:09 by mzhukova         ###   ########.fr       */
+/*   Updated: 2024/08/19 20:57:39 by mzhukova         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,9 +96,15 @@ void	toggle_mutexes(t_env *philo_info, bool is_init)
 	
 	error = 0;
 	if (is_init == false)
+	{
 		error = pthread_mutex_destroy(&philo_info->mutex);
+		error = pthread_mutex_destroy(&philo_info->write);
+	}
 	else if (is_init == true)
+	{
 		error = pthread_mutex_init(&philo_info->mutex, NULL);
+		error = pthread_mutex_init(&philo_info->write, NULL);
+	}
 	if (error != 0)
 		printf("Mutex error\n");
 }

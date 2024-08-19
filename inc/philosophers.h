@@ -6,7 +6,7 @@
 /*   By: mzhukova <mzhukova@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/03 15:42:53 by mariannazhu       #+#    #+#             */
-/*   Updated: 2024/08/19 15:00:21 by mzhukova         ###   ########.fr       */
+/*   Updated: 2024/08/19 21:06:26 by mzhukova         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ typedef struct s_philo
 	int			index;
 	int			state;
 	int			ate_times;
+	int			target_index;
 	bool		forks_taken;
 	size_t		time_last_meal;
 	// size_t		time_begin;
@@ -41,7 +42,8 @@ typedef enum e_types
 	EATING = 1,
 	SLEEPING = 2,
 	THINKING = 3,
-	DEAD = 4
+	DEAD = 4,
+	FORK = 5
 }	t_types;
 
 typedef struct s_env
@@ -56,6 +58,7 @@ typedef struct s_env
 	bool			all_alive;
 	size_t			time_begin;
 	pthread_mutex_t	mutex;
+	pthread_mutex_t	write;
 }	t_env;
 
 
