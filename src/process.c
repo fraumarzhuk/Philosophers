@@ -6,7 +6,7 @@
 /*   By: mzhukova <mzhukova@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/08 17:35:46 by mzhukova          #+#    #+#             */
-/*   Updated: 2024/08/19 15:12:12 by mzhukova         ###   ########.fr       */
+/*   Updated: 2024/08/19 15:52:23 by mzhukova         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,11 +103,11 @@ int eat_pasta(t_philo *philo, int target_index)
 		philo->philo_info->philo_arr[target_index].forks_taken = true;
 		printf("%zu Philo %i has taken forks 🍽️\n", get_current_time() - philo->philo_info->time_begin, philo->index);
 		print_state(EATING, philo->index, philo);
-		philo->ate_times++;
 		pthread_mutex_unlock(&philo->philo_info->mutex);
+		philo->ate_times++;
 		ft_usleep(philo->philo_info->time_eat);
-		pthread_mutex_lock(&philo->philo_info->mutex);
 		philo->time_last_meal = get_current_time();
+		pthread_mutex_lock(&philo->philo_info->mutex);
 		philo->forks_taken = false;
 		philo->philo_info->philo_arr[target_index].forks_taken = false;
 		pthread_mutex_unlock(&philo->philo_info->mutex);
