@@ -6,7 +6,7 @@
 /*   By: mzhukova <mzhukova@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/15 15:15:40 by mzhukova          #+#    #+#             */
-/*   Updated: 2024/08/19 14:50:46 by mzhukova         ###   ########.fr       */
+/*   Updated: 2024/08/19 15:42:26 by mzhukova         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int	ft_usleep(size_t milliseconds)
 	
 	start = get_current_time();
 	while ((get_current_time() - start) < milliseconds)
-		usleep(500);
+		usleep(milliseconds);
 	return (0);
 }
 int is_dead(t_philo *philo)
@@ -41,7 +41,7 @@ int is_dead(t_philo *philo)
 	time_die = philo->philo_info->time_die;
 	// size_t diff = now - time_last_meal;
 	
-	//printf("since last meal: %zu\ntime die: %zu\n\n", diff, time_die);
+	// printf("since last meal: %zu\ntime die: %zu\n\n", diff, time_die);
 	// printf("cur time: %zu\ntime last meal: %zu\n, time die: %zu\n\n", now, time_last_meal, time_die);
 	if ((now - time_last_meal) >= time_die)
 	{

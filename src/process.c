@@ -6,7 +6,7 @@
 /*   By: mzhukova <mzhukova@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/08 17:35:46 by mzhukova          #+#    #+#             */
-/*   Updated: 2024/08/19 14:53:33 by mzhukova         ###   ########.fr       */
+/*   Updated: 2024/08/19 15:49:10 by mzhukova         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	print_state(int state, int index, t_philo *philo)
 		else if (state == THINKING)
 			printf("%zu Philo %i is thinking 💭 Time since last meal: %zu\n", time - philo->philo_info->time_begin, index, time - philo->time_last_meal);
 		else if (state == DEAD)
-			printf("%zu Philo %i is dead. Time since last meal: %zu\n🪦", time - philo->philo_info->time_begin, index, time - philo->time_last_meal);
+			printf("%zu Philo %i is dead 🪦\n Time since last meal: %zu\n", time - philo->philo_info->time_begin, index, time - philo->time_last_meal);
 		else if (state == 0)
 			printf("State is not assigned\n");	
 	}
@@ -59,7 +59,7 @@ void	*life_cycle(void *param)
 			{
 				print_state(SLEEPING, philo->index, philo);
 				ft_usleep(philo->philo_info->time_sleep);
-				print_state(THINKING, philo->index, philo);
+				// print_state(THINKING, philo->index, philo);
 			}
 			else if (philo->state == DEAD)
 			{
@@ -77,7 +77,7 @@ int	forks_are_free(t_philo *philo, t_philo *philo_arr)
 {
 	if (philo->index == 0)
 	{
-		if ((!philo_arr[1].forks_taken))
+		if ((!philo_arr[1].forks_taken && !philo->forks_taken))
 			return (1);
 		else if (!philo_arr[philo->philo_info->num_philos - 1].forks_taken)
 			return (philo->philo_info->num_philos - 1);
@@ -95,16 +95,16 @@ int eat_pasta(t_philo *philo, int target_index)
 		return (0);
 	else
 	{
+		// printf("%zu Philo %i has taken forks 🍽️\n", get_current_time() - philo->philo_info->time_begin, philo->index);
 		pthread_mutex_lock(&philo->philo_info->mutex);
 		philo->forks_taken = true;
 		philo->philo_info->philo_arr[target_index].forks_taken = true;
-		printf("%zu Philo %i has taken forks 🍽️\n", get_current_time() - philo->philo_info->time_begin, philo->index);
-		philo->ate_times++;
 		pthread_mutex_unlock(&philo->philo_info->mutex);
 		print_state(EATING, philo->index, philo);
 		ft_usleep(philo->philo_info->time_eat);
-		pthread_mutex_lock(&philo->philo_info->mutex);
 		philo->time_last_meal = get_current_time();
+		philo->ate_times++;
+		pthread_mutex_lock(&philo->philo_info->mutex);
 		philo->forks_taken = false;
 		philo->philo_info->philo_arr[target_index].forks_taken = false;
 		pthread_mutex_unlock(&philo->philo_info->mutex);
@@ -135,7 +135,7 @@ int	eating_attempt(t_philo *philo)
 			philo->forks_taken = false;
 			// philo->state = THINKING;
 			pthread_mutex_unlock(&philo->philo_info->mutex);
-			ft_usleep(10);
+			ft_usleep(1);
 			return (THINKING); //thinking
 		}
 	}
