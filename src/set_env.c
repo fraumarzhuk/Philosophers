@@ -6,7 +6,7 @@
 /*   By: mzhukova <mzhukova@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/03 16:06:28 by mariannazhu       #+#    #+#             */
-/*   Updated: 2024/08/16 18:13:24 by mzhukova         ###   ########.fr       */
+/*   Updated: 2024/08/19 14:52:48 by mzhukova         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,7 @@ void	set_arguments(int argc, char **argv, t_env *philo_info)
 	else
 		philo_info->num_of_times_each_eat = -1;
 	philo_info->all_alive = true;
+	philo_info->time_begin = get_current_time();
 }
 
 void	create_threads(t_env *philo_info, t_philo *philos)
@@ -61,20 +62,21 @@ void	create_threads(t_env *philo_info, t_philo *philos)
 	{
 		philos[i].index = i;
         philos[i].philo_info = philo_info;
-        philos[i].state = 3;
+        philos[i].state = THINKING;
 		pthread_mutex_lock(&philo_info->mutex);
         philos[i].forks_taken = false;
 		pthread_mutex_unlock(&philo_info->mutex);
 		philos[i].ate_times = 0;
 		philos[i].index = i;
 		philos[i].time_last_meal = get_current_time();
-		philos[i]. time_begin = philos[i].time_last_meal;
+		// philos[i]. time_begin = philos[i].time_last_meal;
 		error = pthread_create(&philos[i].thread, NULL, life_cycle, &philos[i]);
 		if (error != 0)
 			printf("Error creating a thread\n");
 		i++;
 	}
 }
+
 void	join_threads(t_env *philo_info, t_philo *philos)
 {
 	int	i;

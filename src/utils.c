@@ -6,7 +6,7 @@
 /*   By: mzhukova <mzhukova@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/15 15:15:40 by mzhukova          #+#    #+#             */
-/*   Updated: 2024/08/16 17:37:52 by mzhukova         ###   ########.fr       */
+/*   Updated: 2024/08/19 14:50:46 by mzhukova         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int	ft_usleep(size_t milliseconds)
 	
 	start = get_current_time();
 	while ((get_current_time() - start) < milliseconds)
-		usleep(milliseconds);
+		usleep(500);
 	return (0);
 }
 int is_dead(t_philo *philo)

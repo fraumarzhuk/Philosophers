@@ -19,3 +19,5 @@ Test with any values of your choice to verify all the requirements. Ensure philo
 2 800 200 200 0
 
 check for 0? check evalsheet
+
+//taken forks!!!!

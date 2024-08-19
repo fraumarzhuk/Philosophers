@@ -1,15 +1,160 @@
-0 Philo 0 has taken forks 🍽️
-0 Philo 0 is eating 🍝, yum yum. Time since last meal: 0
-200 Philo 0 is sleeping 💤 Time since last meal: 0
-200 Philo 1 has taken forks 🍽️
-200 Philo 1 is eating 🍝, yum yum. Time since last meal: 200
-400 Philo 0 is thinking 💭 Time since last meal: 200
-400 Philo 0 has taken forks 🍽️
-400 Philo 0 is eating 🍝, yum yum. Time since last meal: 200
-600 Philo 0 is sleeping 💤 Time since last meal: 0
-400 Philo 3 has taken forks 🍽️
-400 Philo 3 is eating 🍝, yum yum. Time since last meal: 400
-600 Philo 3 is sleeping 💤 Time since last meal: 0
-dead-check, philo: 2
-800 Philo 2 is dead. Time since last meal: 800
-🪦
+7 Philo 0 has taken forks 🍽️
+11 Philo 0 is eating 🍝, yum yum. Time since last meal: 11
+1 Philo 1 has taken forks 🍽️
+1 Philo 1 is eating 🍝, yum yum. Time since last meal: 1
+1 Philo 2 has taken forks 🍽️
+1 Philo 2 is eating 🍝, yum yum. Time since last meal: 1
+212 Philo 0 is sleeping 💤 Time since last meal: 0
+201 Philo 1 is sleeping 💤 Time since last meal: 0
+201 Philo 2 is sleeping 💤 Time since last meal: 0
+201 Philo 3 has taken forks 🍽️
+201 Philo 3 is eating 🍝, yum yum. Time since last meal: 201
+312 Philo 0 has taken forks 🍽️
+312 Philo 0 is eating 🍝, yum yum. Time since last meal: 100
+311 Philo 1 has taken forks 🍽️
+311 Philo 1 is eating 🍝, yum yum. Time since last meal: 110
+401 Philo 3 is sleeping 💤 Time since last meal: 0
+411 Philo 2 has taken forks 🍽️
+411 Philo 2 is eating 🍝, yum yum. Time since last meal: 210
+512 Philo 0 is sleeping 💤 Time since last meal: 0
+511 Philo 1 is sleeping 💤 Time since last meal: 0
+511 Philo 3 has taken forks 🍽️
+511 Philo 3 is eating 🍝, yum yum. Time since last meal: 110
+612 Philo 0 has taken forks 🍽️
+612 Philo 0 is eating 🍝, yum yum. Time since last meal: 100
+611 Philo 2 is sleeping 💤 Time since last meal: 0
+621 Philo 1 has taken forks 🍽️
+621 Philo 1 is eating 🍝, yum yum. Time since last meal: 110
+711 Philo 3 is sleeping 💤 Time since last meal: 0
+721 Philo 2 has taken forks 🍽️
+721 Philo 2 is eating 🍝, yum yum. Time since last meal: 110
+812 Philo 0 is sleeping 💤 Time since last meal: 0
+821 Philo 1 is sleeping 💤 Time since last meal: 0
+821 Philo 3 has taken forks 🍽️
+821 Philo 3 is eating 🍝, yum yum. Time since last meal: 110
+912 Philo 0 has taken forks 🍽️
+912 Philo 0 is eating 🍝, yum yum. Time since last meal: 100
+921 Philo 2 is sleeping 💤 Time since last meal: 0
+931 Philo 1 has taken forks 🍽️
+931 Philo 1 is eating 🍝, yum yum. Time since last meal: 110
+1021 Philo 3 is sleeping 💤 Time since last meal: 0
+1031 Philo 2 has taken forks 🍽️
+1031 Philo 2 is eating 🍝, yum yum. Time since last meal: 110
+1112 Philo 0 is sleeping 💤 Time since last meal: 0
+1131 Philo 1 is sleeping 💤 Time since last meal: 0
+1131 Philo 3 has taken forks 🍽️
+1131 Philo 3 is eating 🍝, yum yum. Time since last meal: 110
+1212 Philo 0 has taken forks 🍽️
+1212 Philo 0 is eating 🍝, yum yum. Time since last meal: 100
+1231 Philo 2 is sleeping 💤 Time since last meal: 0
+1241 Philo 1 has taken forks 🍽️
+1241 Philo 1 is eating 🍝, yum yum. Time since last meal: 110
+1331 Philo 3 is sleeping 💤 Time since last meal: 0
+1341 Philo 2 has taken forks 🍽️
+1341 Philo 2 is eating 🍝, yum yum. Time since last meal: 110
+1412 Philo 0 is sleeping 💤 Time since last meal: 0
+1441 Philo 1 is sleeping 💤 Time since last meal: 0
+1441 Philo 3 has taken forks 🍽️
+1441 Philo 3 is eating 🍝, yum yum. Time since last meal: 110
+1512 Philo 0 has taken forks 🍽️
+1512 Philo 0 is eating 🍝, yum yum. Time since last meal: 100
+1541 Philo 2 is sleeping 💤 Time since last meal: 0
+1551 Philo 1 has taken forks 🍽️
+1551 Philo 1 is eating 🍝, yum yum. Time since last meal: 110
+1641 Philo 3 is sleeping 💤 Time since last meal: 0
+1651 Philo 2 has taken forks 🍽️
+1651 Philo 2 is eating 🍝, yum yum. Time since last meal: 110
+1712 Philo 0 is sleeping 💤 Time since last meal: 0
+1751 Philo 1 is sleeping 💤 Time since last meal: 0
+1751 Philo 3 has taken forks 🍽️
+1751 Philo 3 is eating 🍝, yum yum. Time since last meal: 110
+1812 Philo 0 has taken forks 🍽️
+1812 Philo 0 is eating 🍝, yum yum. Time since last meal: 100
+1851 Philo 2 is sleeping 💤 Time since last meal: 0
+1861 Philo 1 has taken forks 🍽️
+1861 Philo 1 is eating 🍝, yum yum. Time since last meal: 110
+1951 Philo 3 is sleeping 💤 Time since last meal: 0
+1961 Philo 2 has taken forks 🍽️
+1961 Philo 2 is eating 🍝, yum yum. Time since last meal: 110
+2012 Philo 0 is sleeping 💤 Time since last meal: 0
+2061 Philo 1 is sleeping 💤 Time since last meal: 0
+2061 Philo 3 has taken forks 🍽️
+2062 Philo 3 is eating 🍝, yum yum. Time since last meal: 111
+2112 Philo 0 has taken forks 🍽️
+2112 Philo 0 is eating 🍝, yum yum. Time since last meal: 100
+2161 Philo 2 is sleeping 💤 Time since last meal: 0
+2171 Philo 1 has taken forks 🍽️
+2171 Philo 1 is eating 🍝, yum yum. Time since last meal: 110
+2262 Philo 3 is sleeping 💤 Time since last meal: 0
+2271 Philo 2 has taken forks 🍽️
+2271 Philo 2 is eating 🍝, yum yum. Time since last meal: 110
+2312 Philo 0 is sleeping 💤 Time since last meal: 0
+2371 Philo 1 is sleeping 💤 Time since last meal: 0
+2372 Philo 3 has taken forks 🍽️
+2372 Philo 3 is eating 🍝, yum yum. Time since last meal: 110
+2414 Philo 0 has taken forks 🍽️
+2414 Philo 0 is eating 🍝, yum yum. Time since last meal: 102
+2471 Philo 2 is sleeping 💤 Time since last meal: 0
+2481 Philo 1 has taken forks 🍽️
+2481 Philo 1 is eating 🍝, yum yum. Time since last meal: 110
+2572 Philo 3 is sleeping 💤 Time since last meal: 0
+2581 Philo 2 has taken forks 🍽️
+2581 Philo 2 is eating 🍝, yum yum. Time since last meal: 110
+2614 Philo 0 is sleeping 💤 Time since last meal: 0
+2681 Philo 1 is sleeping 💤 Time since last meal: 0
+2682 Philo 3 has taken forks 🍽️
+2682 Philo 3 is eating 🍝, yum yum. Time since last meal: 110
+2714 Philo 0 has taken forks 🍽️
+2714 Philo 0 is eating 🍝, yum yum. Time since last meal: 100
+2781 Philo 2 is sleeping 💤 Time since last meal: 0
+2791 Philo 1 has taken forks 🍽️
+2791 Philo 1 is eating 🍝, yum yum. Time since last meal: 110
+2882 Philo 3 is sleeping 💤 Time since last meal: 0
+2891 Philo 2 has taken forks 🍽️
+2891 Philo 2 is eating 🍝, yum yum. Time since last meal: 110
+2914 Philo 0 is sleeping 💤 Time since last meal: 0
+2991 Philo 1 is sleeping 💤 Time since last meal: 0
+2992 Philo 3 has taken forks 🍽️
+2992 Philo 3 is eating 🍝, yum yum. Time since last meal: 110
+3014 Philo 0 has taken forks 🍽️
+3014 Philo 0 is eating 🍝, yum yum. Time since last meal: 100
+3091 Philo 2 is sleeping 💤 Time since last meal: 0
+3101 Philo 1 has taken forks 🍽️
+3101 Philo 1 is eating 🍝, yum yum. Time since last meal: 110
+3192 Philo 3 is sleeping 💤 Time since last meal: 0
+3201 Philo 2 has taken forks 🍽️
+3201 Philo 2 is eating 🍝, yum yum. Time since last meal: 110
+3214 Philo 0 is sleeping 💤 Time since last meal: 0
+3301 Philo 1 is sleeping 💤 Time since last meal: 0
+3314 Philo 0 has taken forks 🍽️
+3314 Philo 0 is eating 🍝, yum yum. Time since last meal: 100
+3302 Philo 3 has taken forks 🍽️
+3302 Philo 3 is eating 🍝, yum yum. Time since last meal: 110
+3401 Philo 2 is sleeping 💤 Time since last meal: 0
+3411 Philo 1 has taken forks 🍽️
+3411 Philo 1 is eating 🍝, yum yum. Time since last meal: 110
+3514 Philo 0 is sleeping 💤 Time since last meal: 0
+3502 Philo 3 is sleeping 💤 Time since last meal: 0
+3511 Philo 2 has taken forks 🍽️
+3511 Philo 2 is eating 🍝, yum yum. Time since last meal: 110
+3614 Philo 0 has taken forks 🍽️
+3614 Philo 0 is eating 🍝, yum yum. Time since last meal: 100
+3611 Philo 1 is sleeping 💤 Time since last meal: 0
+3612 Philo 3 has taken forks 🍽️
+3612 Philo 3 is eating 🍝, yum yum. Time since last meal: 110
+3711 Philo 2 is sleeping 💤 Time since last meal: 0
+3721 Philo 1 has taken forks 🍽️
+3721 Philo 1 is eating 🍝, yum yum. Time since last meal: 110
+3814 Philo 0 is sleeping 💤 Time since last meal: 0
+3812 Philo 3 is sleeping 💤 Time since last meal: 0
+3821 Philo 2 has taken forks 🍽️
+3821 Philo 2 is eating 🍝, yum yum. Time since last meal: 110
+3921 Philo 1 is sleeping 💤 Time since last meal: 0
+3934 Philo 0 has taken forks 🍽️
+3934 Philo 0 is eating 🍝, yum yum. Time since last meal: 120
+3922 Philo 3 has taken forks 🍽️
+3922 Philo 3 is eating 🍝, yum yum. Time since last meal: 110
+4021 Philo 2 is sleeping 💤 Time since last meal: 0
+4031 Philo 1 has taken forks 🍽️
+4031 Philo 1 is eating 🍝, yum yum. Time since last meal: 110
+4134 Philo 0 is sleeping 💤 Time sinc
