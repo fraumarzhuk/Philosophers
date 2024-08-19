@@ -6,7 +6,7 @@
 /*   By: mzhukova <mzhukova@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/03 15:42:53 by mariannazhu       #+#    #+#             */
-/*   Updated: 2024/08/19 16:31:34 by mzhukova         ###   ########.fr       */
+/*   Updated: 2024/08/19 18:15:08 by mzhukova         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,8 @@ typedef enum e_types
 	SLEEPING = 2,
 	THINKING = 3,
 	DEAD = 4,
-	FORK = 5
+	FORK = 5,
+	FULL = 6
 }	t_types;
 
 typedef struct s_env
