@@ -6,7 +6,7 @@
 /*   By: mzhukova <mzhukova@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/08 17:35:46 by mzhukova          #+#    #+#             */
-/*   Updated: 2024/08/19 15:52:23 by mzhukova         ###   ########.fr       */
+/*   Updated: 2024/08/19 18:24:24 by mzhukova         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,10 +107,11 @@ int eat_pasta(t_philo *philo, int target_index)
 		philo->ate_times++;
 		ft_usleep(philo->philo_info->time_eat);
 		philo->time_last_meal = get_current_time();
-		pthread_mutex_lock(&philo->philo_info->mutex);
-		philo->forks_taken = false;
-		philo->philo_info->philo_arr[target_index].forks_taken = false;
-		pthread_mutex_unlock(&philo->philo_info->mutex);
+		philo->state = SLEEPING;
+		// pthread_mutex_lock(&philo->philo_info->mutex);
+		// philo->forks_taken = false;
+		// philo->philo_info->philo_arr[target_index].forks_taken = false;
+		// pthread_mutex_unlock(&philo->philo_info->mutex);
 		return (1);
 	}
 	return (1);
@@ -128,13 +129,14 @@ int	eating_attempt(t_philo *philo)
 		if (!eat_pasta(philo, target_index) || is_dead(philo))
 			return (0);
 		philo->state = SLEEPING;
+		// return (1);
 	}
 	else
 	{
 		pthread_mutex_lock(&philo->philo_info->mutex);
 		philo->forks_taken = false;
-		philo->state = THINKING;
 		pthread_mutex_unlock(&philo->philo_info->mutex);
+		//philo->state = THINKING;
 	}
 	return (1);
 }
