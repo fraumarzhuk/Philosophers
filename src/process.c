@@ -6,7 +6,7 @@
 /*   By: mzhukova <mzhukova@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/08 17:35:46 by mzhukova          #+#    #+#             */
-/*   Updated: 2024/08/19 21:20:01 by mzhukova         ###   ########.fr       */
+/*   Updated: 2024/08/21 14:04:11 by mzhukova         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,8 +46,14 @@ void	*life_cycle(void *param)
 		return (param);
 	if (philo->index % 2 == 0)
 		ft_usleep(1);
-	while (philo->philo_info->all_alive)
+	while (1)
 	{
+		pthread_mutex_lock(&philo->philo_info->mutex);
+        if (!philo->philo_info->all_alive) {
+            pthread_mutex_unlock(&philo->philo_info->mutex);
+            return (param);
+        }
+        pthread_mutex_unlock(&philo->philo_info->mutex);
 		if (philo->state == THINKING && (!eating_attempt(philo))) // were thinking before and 
 				return (param);	
 		else if (philo->state == SLEEPING && !is_dead(philo))
@@ -64,19 +70,39 @@ void	*life_cycle(void *param)
 	return (param);
 }
 
+// int	forks_are_free(t_philo *philo, t_philo *philo_arr)
+// {
+// 	if (philo->index == 0 && !philo[0].forks_taken)
+// 	{
+// 		if ((!philo_arr[1].forks_taken))
+// 			return (1);
+// 		else if (!philo_arr[philo->philo_info->num_philos - 1].forks_taken)
+// 			return (philo->philo_info->num_philos - 1);
+// 	}
+// 	else if (!philo->forks_taken && (!philo_arr[philo->index - 1].forks_taken))
+// 		return (philo->index - 1);
+// 	return (-1);
+// }
+
 int	forks_are_free(t_philo *philo, t_philo *philo_arr)
 {
+	int	result;
+
+	result = -1;
+	pthread_mutex_lock(&philo->philo_info->mutex);
 	if (philo->index == 0 && !philo[0].forks_taken)
 	{
 		if ((!philo_arr[1].forks_taken))
-			return (1);
+			result = 1;
 		else if (!philo_arr[philo->philo_info->num_philos - 1].forks_taken)
-			return (philo->philo_info->num_philos - 1);
+			result = philo->philo_info->num_philos - 1;
 	}
 	else if (!philo->forks_taken && (!philo_arr[philo->index - 1].forks_taken))
-		return (philo->index - 1);
-	return (-1);
+		result = philo->index - 1;
+	pthread_mutex_unlock(&philo->philo_info->mutex);
+	return (result);
 }
+
 
 int eat_pasta(t_philo *philo, int target_index)
 {
@@ -105,25 +131,15 @@ int eat_pasta(t_philo *philo, int target_index)
 
 int	eating_attempt(t_philo *philo)
 {
-	//int		target_index;
-	
-	// pthread_mutex_lock(&philo->philo_info->mutex);
 	philo->target_index = forks_are_free(philo, philo->philo_info->philo_arr);
-	// pthread_mutex_unlock(&philo->philo_info->mutex);
 	if (philo->target_index >= 0 && philo->target_index < philo->philo_info->num_philos)
 	{
 		if (!eat_pasta(philo, philo->target_index) || is_dead(philo))
 			return (0);
 		philo->state = SLEEPING;
-		// return (1);
 	}
-	// else
-	// {
-	// 	pthread_mutex_lock(&philo->philo_info->mutex);
-	// 	philo->forks_taken = false;
-	// 	pthread_mutex_unlock(&philo->philo_info->mutex);
-	// 	//philo->state = THINKING;
-	// }
+	if (is_dead(philo))
+		return (0);
 	return (1);
 }
 
