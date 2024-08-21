@@ -6,13 +6,12 @@
 /*   By: mzhukova <mzhukova@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/03 15:42:53 by mariannazhu       #+#    #+#             */
-/*   Updated: 2024/08/19 21:06:26 by mzhukova         ###   ########.fr       */
+/*   Updated: 2024/08/21 15:10:15 by mzhukova         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PHILOSOPHERS_H
 # define PHILOSOPHERS_H
-// # define _ALL_SOURCE
 
 # include <stdio.h>
 # include <unistd.h>
@@ -22,7 +21,7 @@
 # include <errno.h>
 # include "../libft/libft.h"
 
-typedef struct s_env t_env;
+typedef struct s_env	t_env;
 
 typedef struct s_philo
 {
@@ -32,8 +31,7 @@ typedef struct s_philo
 	int			target_index;
 	bool		forks_taken;
 	size_t		time_last_meal;
-	// size_t		time_begin;
-	pthread_t 	thread;
+	pthread_t	thread;
 	t_env		*philo_info;
 }	t_philo;
 
@@ -50,17 +48,16 @@ typedef struct s_env
 {
 	int				num_philos;
 	size_t			time_die;
-	size_t 			time_eat;
-	size_t 			time_sleep;
+	size_t			time_eat;
+	size_t			time_sleep;
 	int				num_of_times_each_eat;
-	unsigned long 	exec_usec;
-	t_philo 		*philo_arr;
+	unsigned long	exec_usec;
+	t_philo			*philo_arr;
 	bool			all_alive;
 	size_t			time_begin;
 	pthread_mutex_t	mutex;
 	pthread_mutex_t	write;
 }	t_env;
-
 
 //set_env
 int		check_arguments(int argc, char **argv);
@@ -75,10 +72,12 @@ void	*life_cycle(void *param);
 int		forks_are_free(t_philo *philo, t_philo *philo_arr);
 int		eat_pasta(t_philo *philo, int target_index);
 int		eating_attempt(t_philo *philo);
-int		is_one_philo(t_philo *philo);
 
 //utils
 size_t	get_current_time(void);
 int		ft_usleep(size_t milliseconds);
 int		is_dead(t_philo *philo);
-# endif
+int		is_one_philo(t_philo *philo);
+int		dead_check(t_philo *philo);
+
+#endif

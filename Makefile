@@ -4,7 +4,7 @@ PINK = \033[0;95;1m
 BLUE = \033[0;94;1m
 DEF_COLOR = \033[0;37m
 
-NAME = philosophers
+NAME = philo
 
 CC = cc
 CFLAGS = -Wall -Wextra -Werror -g
