@@ -6,7 +6,7 @@
 /*   By: mzhukova <mzhukova@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/08 17:35:46 by mzhukova          #+#    #+#             */
-/*   Updated: 2024/08/21 14:04:11 by mzhukova         ###   ########.fr       */
+/*   Updated: 2024/08/21 14:31:29 by mzhukova         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ void	*life_cycle(void *param)
             return (param);
         }
         pthread_mutex_unlock(&philo->philo_info->mutex);
-		if (philo->state == THINKING && (!eating_attempt(philo))) // were thinking before and 
+		if (philo->state == THINKING && (!eating_attempt(philo)))
 				return (param);	
 		else if (philo->state == SLEEPING && !is_dead(philo))
 		{

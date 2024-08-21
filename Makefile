@@ -7,7 +7,7 @@ DEF_COLOR = \033[0;37m
 NAME = philosophers
 
 CC = cc
-CFLAGS = -Wall -Wextra -Werror -g -fsanitize=thread
+CFLAGS = -Wall -Wextra -Werror -g
 SRCS =	src/main.c \
 		src/set_env.c \
 		src/process.c \
